@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TOPT · 进度跟进流程 · 培训教材</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
+        /* ===== 全局重置 ===== */
         * {
             margin: 0;
             padding: 0;
@@ -17,8 +18,8 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #eef4fa;
-            color: #1e2a41;
+            background: #f1f6fd;
+            color: #0f1e2f;
             padding: 2rem 1.5rem;
             line-height: 1.6;
             min-height: 100vh;
@@ -28,23 +29,24 @@
             transition: background 0.3s ease, color 0.3s ease;
         }
 
+        /* ===== 主容器 — 毛玻璃质感 ===== */
         .container {
-            max-width: 1360px;
+            max-width: 1400px;
             margin: 0 auto;
-            background: #ffffff;
-            border-radius: 48px;
-            box-shadow: 0 30px 60px -18px rgba(0, 20, 40, 0.30);
+            background: rgba(255, 255, 255, 0.70);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border-radius: 56px;
+            box-shadow: 0 40px 80px -20px rgba(0, 20, 40, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.5) inset;
             padding: 2.8rem 3.2rem;
             transition: all 0.2s ease;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(1px);
         }
 
-        /* ===== 头部 ===== */
+        /* ===== 头部 — 精致排版 ===== */
         .header {
-            border-bottom: 2px solid #eaf0f7;
-            padding-bottom: 1.6rem;
-            margin-bottom: 2.4rem;
+            border-bottom: 1px solid rgba(0, 20, 40, 0.06);
+            padding-bottom: 1.8rem;
+            margin-bottom: 2.6rem;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
@@ -59,14 +61,14 @@
         }
 
         .logo-wrap {
-            background: #f2f8ff;
+            background: rgba(255, 255, 255, 0.6);
             border-radius: 60px;
             padding: 0.4rem 0.8rem 0.4rem 0.4rem;
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            border: 1px solid #dce6f2;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+            border: 1px solid rgba(0, 20, 40, 0.06);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
             transition: background 0.3s ease, border-color 0.3s ease;
         }
 
@@ -92,7 +94,7 @@
             font-size: 2.2rem;
             font-weight: 700;
             letter-spacing: -0.02em;
-            background: linear-gradient(145deg, #0b2b4a, #1f4b6e);
+            background: linear-gradient(145deg, #0a1e33, #1a4b70);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -100,14 +102,16 @@
         }
 
         .header-left .subhead {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 500;
-            color: #4f6a85;
-            background: #eaf0f8;
+            color: #4a6a85;
+            background: rgba(230, 242, 255, 0.6);
             display: inline-block;
             padding: 0.2rem 1.4rem;
             border-radius: 40px;
             letter-spacing: 0.2px;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
             transition: background 0.3s ease, color 0.3s ease;
         }
 
@@ -115,17 +119,19 @@
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            gap: 1.2rem 1.8rem;
+            gap: 1rem 1.6rem;
         }
 
         .author-block {
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            background: #f4f9ff;
-            padding: 0.4rem 1.4rem 0.4rem 1.8rem;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(8px);
+            padding: 0.4rem 1.6rem 0.4rem 2rem;
             border-radius: 60px;
-            border: 1px solid #dce6f2;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
             transition: background 0.3s ease, border-color 0.3s ease;
         }
 
@@ -145,48 +151,25 @@
         }
 
         .author-email {
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             font-weight: 500;
             color: #2a577b;
-            background: white;
+            background: rgba(255, 255, 255, 0.6);
             padding: 0 12px;
             border-radius: 30px;
             letter-spacing: 0.2px;
             transition: background 0.3s ease, color 0.3s ease;
         }
 
-        .badge {
-            background: #eef3fa;
-            padding: 0.4rem 1.2rem;
-            border-radius: 40px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #1e3b5c;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            border: 1px solid #dae2ed;
-            transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-        }
-
-        .badge i {
-            font-style: normal;
-            background: #1f4b6e;
-            color: white;
-            border-radius: 30px;
-            padding: 0 12px;
-            font-size: 0.7rem;
-            line-height: 1.8;
-        }
-
-        /* ===== 目录 ===== */
+        /* ===== 目录 — 精致网格 ===== */
         .toc {
-            background: #f2f8fe;
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(12px);
             border-radius: 32px;
             padding: 1.2rem 2.2rem;
             margin-bottom: 3rem;
-            border: 1px solid #e3ebf6;
-            box-shadow: inset 0 2px 4px rgba(255,255,255,0.6);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
             transition: background 0.3s ease, border-color 0.3s ease;
         }
 
@@ -194,12 +177,12 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
 
         .toc-title {
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: #12344a;
             display: flex;
             align-items: center;
@@ -212,8 +195,9 @@
             color: white;
             padding: 0 16px;
             border-radius: 40px;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             line-height: 1.9;
+            font-weight: 600;
         }
 
         .toc-grid {
@@ -237,7 +221,7 @@
 
         .toc-grid li .step-num {
             display: inline-block;
-            background: #dce6f2;
+            background: rgba(220, 230, 242, 0.6);
             color: #1f4b6e;
             font-size: 0.6rem;
             font-weight: 700;
@@ -259,10 +243,25 @@
             color: inherit;
             text-decoration: none;
             transition: color 0.2s ease;
+            position: relative;
+        }
+
+        .toc-grid li a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: #1f4b6e;
+            transition: width 0.25s ease;
         }
 
         .toc-grid li a:hover {
             color: #1f4b6e;
+        }
+        .toc-grid li a:hover::after {
+            width: 100%;
         }
 
         @media (max-width: 600px) {
@@ -271,9 +270,9 @@
             }
         }
 
-        /* ===== 章节 ===== */
+        /* ===== 章节标题 ===== */
         .section {
-            margin-bottom: 2.5rem;
+            margin-bottom: 2.8rem;
         }
 
         .section-title {
@@ -282,7 +281,7 @@
             letter-spacing: -0.01em;
             color: #0b2b4a;
             padding-bottom: 0.5rem;
-            border-bottom: 4px solid #dce6f2;
+            border-bottom: 2px solid rgba(0, 20, 40, 0.06);
             margin-bottom: 2.2rem;
             display: flex;
             align-items: center;
@@ -291,17 +290,18 @@
         }
 
         .section-title .num {
-            background: #1f4b6e;
+            background: linear-gradient(145deg, #1f4b6e, #0b2b4a);
             color: white;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 600;
             padding: 0.1rem 1.2rem;
             border-radius: 40px;
+            box-shadow: 0 4px 12px rgba(31, 75, 110, 0.15);
         }
 
         /* ===== 子章节 ===== */
         .subsection {
-            margin-top: 2.5rem;
+            margin-top: 2.6rem;
             padding-left: 0.5rem;
             scroll-margin-top: 20px;
         }
@@ -318,7 +318,7 @@
         }
 
         .subsection h4 {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: #2a4a6a;
             margin: 1.2rem 0 0.8rem 0;
@@ -328,93 +328,109 @@
             transition: color 0.3s ease;
         }
 
-        /* ===== 步骤卡片 ===== */
+        /* ===== 步骤卡片 — 极致精致 ===== */
         .step-desc {
-            background: #f8faff;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(8px);
             padding: 1.2rem 2rem;
             border-radius: 24px;
-            border-left: 6px solid #3875ac;
+            border-left: 4px solid #3875ac;
             margin: 0.8rem 0 1.5rem 0;
             font-weight: 500;
             color: #1d3a53;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
-            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             cursor: default;
             scroll-margin-top: 80px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
         }
 
         .step-desc:hover {
-            transform: translateX(6px);
-            box-shadow: 0 4px 12px rgba(0, 20, 40, 0.08);
+            transform: translateX(6px) scale(1.002);
+            box-shadow: 0 8px 24px rgba(0, 20, 40, 0.06);
+            border-color: rgba(56, 117, 172, 0.15);
         }
 
         .step-desc.highlight {
             border-left-color: #d99e4a !important;
-            background: #fcf8f0 !important;
-            box-shadow: 0 0 0 3px rgba(217, 158, 74, 0.15);
+            background: rgba(252, 248, 240, 0.7) !important;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 0 0 2px rgba(217, 158, 74, 0.12);
         }
 
         .step-desc .remark {
             display: inline-block;
             margin-top: 6px;
             font-weight: 400;
-            background: #eaf1fa;
+            background: rgba(234, 241, 250, 0.5);
+            backdrop-filter: blur(4px);
             padding: 4px 18px;
             border-radius: 30px;
             font-size: 0.9rem;
             transition: background 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .step-desc .code-inline {
-            background: #eaf1fa;
+            background: rgba(234, 241, 250, 0.6);
+            backdrop-filter: blur(4px);
             padding: 0.1rem 0.7rem;
             border-radius: 30px;
             font-family: 'Inter', monospace;
             font-weight: 600;
             color: #004080;
             font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .step-desc .download-link {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: #1f4b6e;
+            background: linear-gradient(145deg, #1f4b6e, #0b2b4a);
             color: white;
-            padding: 0.2rem 1rem;
+            padding: 0.25rem 1.2rem;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 500;
             font-size: 0.85rem;
-            transition: background 0.2s;
+            transition: all 0.25s ease;
+            box-shadow: 0 2px 8px rgba(31, 75, 110, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .step-desc .download-link:hover {
-            background: #0b2b4a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(31, 75, 110, 0.2);
+            background: linear-gradient(145deg, #0b2b4a, #061a2e);
         }
 
         .step-desc .sub-operation {
             margin-top: 8px;
             font-weight: 400;
-            background: #eaf1fa;
+            background: rgba(234, 241, 250, 0.4);
+            backdrop-filter: blur(4px);
             padding: 6px 18px;
             border-radius: 30px;
             display: inline-block;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .step-desc .sub-operation i {
             margin-right: 6px;
         }
 
-        /* ===== 注意事项 ===== */
+        /* ===== 注意事项 — 精致柔和 ===== */
         .note-box {
-            background: #fcf4e8;
+            background: rgba(252, 244, 232, 0.5);
+            backdrop-filter: blur(8px);
             border-radius: 20px;
             padding: 1.2rem 2rem;
             margin: 1.5rem 0 2rem 0;
-            border-left: 6px solid #d99e4a;
+            border-left: 4px solid #d99e4a;
             color: #5a401f;
             transition: background 0.3s ease, color 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .note-box strong {
@@ -443,28 +459,30 @@
         }
 
         .img-card {
-            background: #f8fafc;
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(8px);
             border-radius: 20px;
             padding: 0.8rem 0.8rem 1rem 0.8rem;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
-            border: 1px solid #e2ebf6;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.02);
+            border: 1px solid rgba(255, 255, 255, 0.5);
             flex: 1 1 220px;
             min-width: 180px;
             text-align: center;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .img-card:hover {
-            transform: translateY(-6px) scale(1.02);
-            box-shadow: 0 16px 40px rgba(0, 20, 40, 0.12);
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 16px 40px rgba(0, 20, 40, 0.06);
+            border-color: rgba(255, 255, 255, 0.8);
         }
 
         .img-card img {
             width: 100%;
             height: auto;
             border-radius: 14px;
-            border: 1px solid #dce6f2;
-            background: #f0f4fa;
+            border: 1px solid rgba(220, 230, 242, 0.4);
+            background: #f8fafc;
             display: block;
             margin-bottom: 6px;
             transition: all 0.3s ease;
@@ -476,35 +494,40 @@
             font-size: 0.8rem;
             font-weight: 500;
             color: #1f4a6e;
-            background: white;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(4px);
             padding: 0.2rem 0.8rem;
             border-radius: 40px;
             display: inline-block;
             margin-top: 4px;
             transition: background 0.3s ease, color 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .img-card .code-tag {
             font-family: 'Inter', monospace;
-            background: #e7eff9;
+            background: rgba(231, 239, 249, 0.5);
+            backdrop-filter: blur(4px);
             padding: 0.1rem 0.8rem;
             border-radius: 30px;
             font-size: 0.7rem;
             font-weight: 600;
             color: #004080;
             transition: background 0.3s ease, color 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         /* ===== 页脚 ===== */
         .footer-note {
-            margin-top: 3rem;
+            margin-top: 3.2rem;
             font-size: 0.9rem;
             color: #3d5e7b;
-            background: #ecf3fa;
+            background: rgba(255, 255, 255, 0.35);
+            backdrop-filter: blur(12px);
             padding: 1rem 2.2rem;
             border-radius: 60px;
             text-align: center;
-            border: 1px solid #d5e0ed;
+            border: 1px solid rgba(255, 255, 255, 0.4);
             font-weight: 500;
             display: flex;
             flex-wrap: wrap;
@@ -515,29 +538,31 @@
         }
 
         .footer-note .doc-badge {
-            background: #1f4b6e;
+            background: linear-gradient(145deg, #1f4b6e, #0b2b4a);
             color: white;
             padding: 0.15rem 1.2rem;
             border-radius: 40px;
             font-size: 0.8rem;
             font-weight: 600;
+            box-shadow: 0 2px 8px rgba(31, 75, 110, 0.12);
         }
 
-        /* ===== 侧边导航 ===== */
+        /* ===== 侧边导航 — 精致圆点 ===== */
         .step-nav {
             position: fixed;
             right: 30px;
             top: 50%;
             transform: translateY(-50%);
-            background: white;
-            padding: 12px 8px;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(16px);
+            padding: 14px 10px;
             border-radius: 40px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-            border: 1px solid #e2ebf6;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.4);
             z-index: 100;
             display: none;
             flex-direction: column;
-            gap: 8px;
+            gap: 10px;
             transition: background 0.3s ease, border-color 0.3s ease;
         }
 
@@ -548,59 +573,63 @@
         }
 
         .step-nav .nav-dot {
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
-            background: #dce6f2;
+            background: rgba(220, 230, 242, 0.6);
             transition: all 0.3s ease;
             cursor: pointer;
             position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
         .step-nav .nav-dot:hover {
-            transform: scale(1.3);
+            transform: scale(1.4);
+            background: #1f4b6e;
         }
 
         .step-nav .nav-dot.active {
             background: #1f4b6e;
-            box-shadow: 0 0 0 3px rgba(31, 75, 110, 0.2);
+            box-shadow: 0 0 0 4px rgba(31, 75, 110, 0.08);
         }
 
         .step-nav .nav-dot .tooltip {
             position: absolute;
-            right: 24px;
+            right: 26px;
             top: 50%;
             transform: translateY(-50%);
-            background: #1f4b6e;
+            background: rgba(15, 30, 47, 0.85);
+            backdrop-filter: blur(8px);
             color: white;
-            padding: 4px 12px;
+            padding: 4px 14px;
             border-radius: 20px;
             font-size: 0.7rem;
             white-space: nowrap;
             opacity: 0;
             pointer-events: none;
             transition: all 0.3s ease;
+            font-weight: 500;
         }
 
         .step-nav .nav-dot:hover .tooltip {
             opacity: 1;
-            right: 28px;
+            right: 30px;
         }
 
-        /* ===== Lightbox ===== */
+        /* ===== Lightbox — 精致沉浸 ===== */
         .lightbox-overlay {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(24px);
             display: none;
             justify-content: center;
             align-items: center;
             z-index: 9999;
             padding: 20px;
-            backdrop-filter: blur(8px);
             animation: fadeIn 0.3s ease;
         }
 
@@ -609,12 +638,13 @@
         }
 
         .lightbox-overlay img {
-            max-width: 90%;
-            max-height: 90%;
+            max-width: 92%;
+            max-height: 92%;
             object-fit: contain;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border-radius: 16px;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
             animation: zoomIn 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .lightbox-close {
@@ -622,22 +652,23 @@
             top: 30px;
             right: 40px;
             color: white;
-            font-size: 36px;
+            font-size: 28px;
             cursor: pointer;
             z-index: 10000;
-            background: rgba(255,255,255,0.1);
-            width: 50px;
-            height: 50px;
+            background: rgba(255,255,255,0.08);
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
-            border: 2px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.12);
+            backdrop-filter: blur(8px);
         }
 
         .lightbox-close:hover {
-            background: rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.15);
             transform: rotate(90deg);
         }
 
@@ -647,7 +678,7 @@
         }
 
         @keyframes zoomIn {
-            from { transform: scale(0.8); opacity: 0; }
+            from { transform: scale(0.92); opacity: 0; }
             to { transform: scale(1); opacity: 1; }
         }
 
@@ -658,89 +689,62 @@
                 color: #e8edf3;
             }
             .container {
-                background: #1a2a3f;
-                border-color: #2a3f5a;
+                background: rgba(20, 35, 55, 0.65);
+                backdrop-filter: blur(20px) saturate(180%);
+                border-color: rgba(255, 255, 255, 0.04);
             }
-            .step-desc {
-                background: #1e3145;
-                border-left-color: #4a7aad;
-                color: #dce6f2;
+            .header {
+                border-color: rgba(255, 255, 255, 0.04);
             }
-            .step-desc .remark {
-                background: #2a4058;
-                color: #b8d0e8;
+            .logo-wrap {
+                background: rgba(255, 255, 255, 0.04);
+                border-color: rgba(255, 255, 255, 0.06);
             }
-            .step-desc .code-inline {
-                background: #2a4058;
-                color: #8ab0d8;
+            .logo-wrap .brand-text {
+                color: #c8d8e8;
             }
-            .step-desc .sub-operation {
-                background: #2a4058;
-                color: #b8d0e8;
+            .header-left h1 {
+                background: linear-gradient(145deg, #c8d8e8, #8ab0d0);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
             }
-            .img-card {
-                background: #1a2a3f;
-                border-color: #2a3f5a;
+            .header-left .subhead {
+                background: rgba(255, 255, 255, 0.04);
+                color: #8a9ab0;
+                border-color: rgba(255, 255, 255, 0.04);
             }
-            .img-card img {
-                border-color: #2a3f5a;
-                background: #0d1b2a;
+            .author-block {
+                background: rgba(255, 255, 255, 0.04);
+                border-color: rgba(255, 255, 255, 0.06);
+            }
+            .author-name {
+                color: #c8d8e8;
+            }
+            .author-email {
+                background: rgba(255, 255, 255, 0.04);
+                color: #8ab0d0;
             }
             .toc {
-                background: #1a2a3f;
-                border-color: #2a3f5a;
+                background: rgba(255, 255, 255, 0.03);
+                border-color: rgba(255, 255, 255, 0.04);
+            }
+            .toc-title {
+                color: #b8c8d8;
             }
             .toc-grid li {
                 color: #b8c8d8;
             }
             .toc-grid li .step-num {
-                background: #2a4058;
+                background: rgba(255, 255, 255, 0.04);
                 color: #8ab0d8;
             }
-            .note-box {
-                background: #2a2518;
-                border-left-color: #d99e4a;
-                color: #e8d8b8;
-            }
-            .step-nav {
-                background: #1a2a3f;
-                border-color: #2a3f5a;
-            }
-            .step-nav .nav-dot {
-                background: #2a4058;
-            }
-            .footer-note {
-                background: #1a2a3f;
-                border-color: #2a3f5a;
-                color: #b8c8d8;
-            }
-            .badge {
-                background: #1e3145;
-                border-color: #2a3f5a;
-                color: #b8c8d8;
-            }
-            .header-left .subhead {
-                background: #1e3145;
-                color: #b8c8d8;
-            }
-            .author-block {
-                background: #1e3145;
-                border-color: #2a3f5a;
-            }
-            .author-email {
-                background: #1a2a3f;
-                color: #8ab0d0;
-            }
-            .logo-wrap {
-                background: #1a2a3f;
-                border-color: #2a3f5a;
-            }
-            .logo-wrap .brand-text {
-                color: #b8c8d8;
-            }
             .section-title {
-                color: #b8c8d8;
-                border-color: #2a3f5a;
+                color: #c8d8e8;
+                border-color: rgba(255, 255, 255, 0.04);
+            }
+            .section-title .num {
+                background: linear-gradient(145deg, #2a5a7a, #1a3a5a);
             }
             .subsection h3 {
                 color: #b8c8d8;
@@ -748,22 +752,67 @@
             .subsection h4 {
                 color: #8ab0d0;
             }
+            .step-desc {
+                background: rgba(255, 255, 255, 0.03);
+                border-color: rgba(255, 255, 255, 0.04);
+                color: #dce6f2;
+            }
+            .step-desc .remark {
+                background: rgba(255, 255, 255, 0.04);
+                color: #b8d0e8;
+                border-color: rgba(255, 255, 255, 0.04);
+            }
+            .step-desc .code-inline {
+                background: rgba(255, 255, 255, 0.04);
+                color: #8ab0d8;
+                border-color: rgba(255, 255, 255, 0.04);
+            }
+            .step-desc .sub-operation {
+                background: rgba(255, 255, 255, 0.03);
+                color: #b8d0e8;
+                border-color: rgba(255, 255, 255, 0.04);
+            }
+            .step-desc.highlight {
+                background: rgba(252, 248, 240, 0.04) !important;
+            }
+            .img-card {
+                background: rgba(255, 255, 255, 0.03);
+                border-color: rgba(255, 255, 255, 0.04);
+            }
+            .img-card img {
+                border-color: rgba(255, 255, 255, 0.04);
+                background: #0d1b2a;
+            }
             .img-card .img-caption {
-                background: #1a2a3f;
+                background: rgba(255, 255, 255, 0.04);
                 color: #8ab0d0;
+                border-color: rgba(255, 255, 255, 0.04);
             }
             .img-card .code-tag {
-                background: #1e3145;
+                background: rgba(255, 255, 255, 0.04);
                 color: #8ab0d8;
+                border-color: rgba(255, 255, 255, 0.04);
             }
-            .toc-title {
+            .note-box {
+                background: rgba(42, 37, 24, 0.3);
+                border-color: rgba(217, 158, 74, 0.15);
+                color: #e8d8b8;
+            }
+            .footer-note {
+                background: rgba(255, 255, 255, 0.02);
+                border-color: rgba(255, 255, 255, 0.04);
                 color: #b8c8d8;
             }
-            .step-desc .download-link {
-                background: #0b2b4a;
+            .step-nav {
+                background: rgba(20, 35, 55, 0.5);
+                border-color: rgba(255, 255, 255, 0.04);
             }
-            .step-desc .download-link:hover {
-                background: #1f4b6e;
+            .step-nav .nav-dot {
+                background: rgba(255, 255, 255, 0.06);
+                border-color: rgba(255, 255, 255, 0.04);
+            }
+            .step-nav .nav-dot.active {
+                background: #4a7aad;
             }
         }
 
@@ -771,6 +820,7 @@
         @media (max-width: 768px) {
             .container {
                 padding: 1.5rem;
+                border-radius: 32px;
             }
             .header {
                 flex-direction: column;
@@ -805,7 +855,7 @@
             }
             .step-nav {
                 right: 10px;
-                padding: 8px 6px;
+                padding: 10px 6px;
             }
             .step-nav .nav-dot {
                 width: 8px;
@@ -819,7 +869,7 @@
                 right: 20px;
                 width: 40px;
                 height: 40px;
-                font-size: 24px;
+                font-size: 20px;
             }
         }
 
@@ -829,7 +879,7 @@
             }
             .container {
                 padding: 1rem;
-                border-radius: 28px;
+                border-radius: 24px;
             }
             .logo-wrap .brand-text {
                 display: none;
@@ -846,6 +896,8 @@
                 box-shadow: none !important;
                 border-radius: 0 !important;
                 padding: 20px !important;
+                background: white !important;
+                backdrop-filter: none !important;
             }
             body {
                 background: white !important;
@@ -873,7 +925,7 @@
     <div class="header">
         <div class="header-brand">
             <div class="logo-wrap">
-                <img src="https://github.com/liuyang042/Production-Order-Create/blob/main/Black-Over/Logo.png?raw=true" alt="TOPT Logo">
+                <img src="https://github.com/liuyang042/Production-Order-Create/blob/main/Black-Over/Logo.png?raw=true" alt="TOPT Logo" />
                 <span class="brand-text">TOPT</span>
             </div>
             <div class="header-left">
@@ -886,8 +938,6 @@
                 <span class="author-name"><i class="fas fa-user-pen"></i> 刘洋</span>
                 <span class="author-email"><i class="far fa-envelope"></i> liu-yang@top-textiles.vn</span>
             </div>
-            <span class="badge"><i class="fas fa-check-circle"></i> 已审核</span>
-            <span class="badge"><i class="far fa-image"></i> 图文并茂</span>
         </div>
     </div>
 
@@ -917,7 +967,7 @@
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-1.png?raw=true" alt="1-1 交期现状" loading="lazy">
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-1.png?raw=true" alt="1-1 交期现状" loading="lazy" />
                 <div><span class="code-tag">交期现状</span><span class="img-caption">图 1-1 交期现状</span></div>
             </div>
         </div>
@@ -933,7 +983,7 @@
             </div>
             <div class="img-grid">
                 <div class="img-card">
-                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-2.png?raw=true" alt="1-2 TORAY 交货计划" loading="lazy">
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-2.png?raw=true" alt="1-2 TORAY 交货计划" loading="lazy" />
                     <div><span class="code-tag">TORAY</span><span class="img-caption">图 1-2 TORAY 交货计划</span></div>
                 </div>
             </div>
@@ -950,7 +1000,7 @@
             </div>
             <div class="img-grid">
                 <div class="img-card">
-                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-3.png?raw=true" alt="1-3 NON-TORAY 交货计划" loading="lazy">
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-3.png?raw=true" alt="1-3 NON-TORAY 交货计划" loading="lazy" />
                     <div><span class="code-tag">NON-TORAY</span><span class="img-caption">图 1-3 NON-TORAY 交货计划</span></div>
                 </div>
             </div>
@@ -972,7 +1022,7 @@
             <h3><i class="fas fa-warehouse" style="color:#2b5f8a;"></i> STOCK + WIP（TORAY）</h3>
             <div class="img-grid">
                 <div class="img-card">
-                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-4.png?raw=true" alt="1-4 TORAY 库存WIP" loading="lazy">
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-4.png?raw=true" alt="1-4 TORAY 库存WIP" loading="lazy" />
                     <div><span class="code-tag">TORAY</span><span class="img-caption">图 1-4 STOCK+WIP（TORAY）</span></div>
                 </div>
             </div>
@@ -991,7 +1041,7 @@
             </div>
             <div class="img-grid">
                 <div class="img-card">
-                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-6.png?raw=true" alt="1-6 TORAY 交货计划分析" loading="lazy">
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-6.png?raw=true" alt="1-6 TORAY 交货计划分析" loading="lazy" />
                     <div><span class="code-tag">分析工具</span><span class="img-caption">图 1-6 交货计划分析</span></div>
                 </div>
             </div>
@@ -1008,7 +1058,7 @@
             </div>
             <div class="img-grid">
                 <div class="img-card">
-                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-7.png?raw=true" alt="1-7 库存分析" loading="lazy">
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-7.png?raw=true" alt="1-7 库存分析" loading="lazy" />
                     <div><span class="code-tag">库存分析</span><span class="img-caption">图 1-7 库存分析</span></div>
                 </div>
             </div>
@@ -1025,7 +1075,7 @@
             </div>
             <div class="img-grid">
                 <div class="img-card">
-                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-8.png?raw=true" alt="1-8 WIP分析" loading="lazy">
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-8.png?raw=true" alt="1-8 WIP分析" loading="lazy" />
                     <div><span class="code-tag">WIP分析</span><span class="img-caption">图 1-8 WIP 分析</span></div>
                 </div>
             </div>
@@ -1041,7 +1091,7 @@
             </div>
             <div class="img-grid">
                 <div class="img-card">
-                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-9.png?raw=true" alt="1-9 邮件发送" loading="lazy">
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-9.png?raw=true" alt="1-9 邮件发送" loading="lazy" />
                     <div><span class="code-tag">邮件发送</span><span class="img-caption">图 1-9 交货清单邮件</span></div>
                 </div>
             </div>
@@ -1052,7 +1102,7 @@
             <h3><i class="fas fa-warehouse" style="color:#8a6e9b;"></i> STOCK + WIP（NON-TORAY）</h3>
             <div class="img-grid">
                 <div class="img-card">
-                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-5.png?raw=true" alt="1-5 NON-TORAY 库存WIP" loading="lazy">
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-5.png?raw=true" alt="1-5 NON-TORAY 库存WIP" loading="lazy" />
                     <div><span class="code-tag">NON-TORAY</span><span class="img-caption">图 1-5 STOCK+WIP（NON-TORAY）</span></div>
                 </div>
             </div>
@@ -1071,7 +1121,7 @@
             </div>
             <div class="img-grid">
                 <div class="img-card">
-                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-11.png?raw=true" alt="1-11 NON-TORAY 分析" loading="lazy">
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-11.png?raw=true" alt="1-11 NON-TORAY 分析" loading="lazy" />
                     <div><span class="code-tag">分析工具</span><span class="img-caption">图 1-11 NON-TORAY 分析</span></div>
                 </div>
             </div>
@@ -1088,7 +1138,7 @@
             </div>
             <div class="img-grid">
                 <div class="img-card">
-                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-10.png?raw=true" alt="1-10 库存WIP分析" loading="lazy">
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-10.png?raw=true" alt="1-10 库存WIP分析" loading="lazy" />
                     <div><span class="code-tag">库存WIP</span><span class="img-caption">图 1-10 库存+WIP分析</span></div>
                 </div>
             </div>
@@ -1099,7 +1149,7 @@
             </div>
             <div class="img-grid">
                 <div class="img-card">
-                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-12.png?raw=true" alt="1-12 邮件发送" loading="lazy">
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-12.png?raw=true" alt="1-12 邮件发送" loading="lazy" />
                     <div><span class="code-tag">邮件发送</span><span class="img-caption">图 1-12 交货清单邮件</span></div>
                 </div>
             </div>
@@ -1117,7 +1167,7 @@
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-13.png?raw=true" alt="1-13 ZSOHPP143" loading="lazy">
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-13.png?raw=true" alt="1-13 ZSOHPP143" loading="lazy" />
                 <div><span class="code-tag">ZSOHPP143</span><span class="img-caption">图 1-13 大货急单跟进</span></div>
             </div>
         </div>
@@ -1128,7 +1178,7 @@
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-14.png?raw=true" alt="1-14 ZSOHPP190" loading="lazy">
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-14.png?raw=true" alt="1-14 ZSOHPP190" loading="lazy" />
                 <div><span class="code-tag">ZSOHPP190</span><span class="img-caption">图 1-14 APP 急单跟进</span></div>
             </div>
         </div>
@@ -1144,7 +1194,7 @@
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-15.png?raw=true" alt="1-15 染厂分析" loading="lazy">
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-15.png?raw=true" alt="1-15 染厂分析" loading="lazy" />
                 <div><span class="code-tag">染厂</span><span class="img-caption">图 1-15 染厂 WIP 分析</span></div>
             </div>
         </div>
@@ -1160,7 +1210,7 @@
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-16.png?raw=true" alt="1-16 整理分析" loading="lazy">
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-16.png?raw=true" alt="1-16 整理分析" loading="lazy" />
                 <div><span class="code-tag">整理</span><span class="img-caption">图 1-16 整理 WIP 分析</span></div>
             </div>
         </div>
@@ -1176,23 +1226,23 @@
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-17.png?raw=true" alt="1-17 分析1" loading="lazy">
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-17.png?raw=true" alt="1-17 分析1" loading="lazy" />
                 <div><span class="code-tag">分析工具</span><span class="img-caption">图 1-17 工单分析</span></div>
             </div>
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-18.png?raw=true" alt="1-18 分析2" loading="lazy">
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-18.png?raw=true" alt="1-18 分析2" loading="lazy" />
                 <div><span class="code-tag">分析工具</span><span class="img-caption">图 1-18 工单分析</span></div>
             </div>
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-19.png?raw=true" alt="1-19 分析3" loading="lazy">
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-19.png?raw=true" alt="1-19 分析3" loading="lazy" />
                 <div><span class="code-tag">分析工具</span><span class="img-caption">图 1-19 工单分析</span></div>
             </div>
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-20.png?raw=true" alt="1-20 分析4" loading="lazy">
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-20.png?raw=true" alt="1-20 分析4" loading="lazy" />
                 <div><span class="code-tag">分析工具</span><span class="img-caption">图 1-20 工单分析</span></div>
             </div>
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-21.png?raw=true" alt="1-21 分析5" loading="lazy">
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-21.png?raw=true" alt="1-21 分析5" loading="lazy" />
                 <div><span class="code-tag">分析工具</span><span class="img-caption">图 1-21 工单分析</span></div>
             </div>
         </div>
@@ -1209,11 +1259,11 @@
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-22.png?raw=true" alt="1-22 QTC查询" loading="lazy">
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-22.png?raw=true" alt="1-22 QTC查询" loading="lazy" />
                 <div><span class="code-tag">ZSOHQM031</span><span class="img-caption">图 1-22 QTC 查询</span></div>
             </div>
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-23.png?raw=true" alt="1-23 QTC结果" loading="lazy">
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-23.png?raw=true" alt="1-23 QTC结果" loading="lazy" />
                 <div><span class="code-tag">QTC 结果</span><span class="img-caption">图 1-23 QTC 结果</span></div>
             </div>
         </div>
@@ -1224,7 +1274,7 @@
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-24.png?raw=true" alt="1-24 QTC异常" loading="lazy">
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-24.png?raw=true" alt="1-24 QTC异常" loading="lazy" />
                 <div><span class="code-tag">异常通报</span><span class="img-caption">图 1-24 QTC 异常通报</span></div>
             </div>
         </div>
@@ -1235,11 +1285,11 @@
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-25.png?raw=true" alt="1-25 6级布查询" loading="lazy">
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-25.png?raw=true" alt="1-25 6级布查询" loading="lazy" />
                 <div><span class="code-tag">ZSOHQM010</span><span class="img-caption">图 1-25 6 级布查询</span></div>
             </div>
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-26.png?raw=true" alt="1-26 6级布结果" loading="lazy">
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-26.png?raw=true" alt="1-26 6级布结果" loading="lazy" />
                 <div><span class="code-tag">查询结果</span><span class="img-caption">图 1-26 6 级布结果</span></div>
             </div>
         </div>
@@ -1255,7 +1305,7 @@
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-27.png?raw=true" alt="1-27 6级布通报" loading="lazy">
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-27.png?raw=true" alt="1-27 6级布通报" loading="lazy" />
                 <div><span class="code-tag">进度通报</span><span class="img-caption">图 1-27 6 级布通报</span></div>
             </div>
         </div>
@@ -1266,7 +1316,7 @@
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-28.png?raw=true" alt="1-28 颜色NG" loading="lazy">
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-28.png?raw=true" alt="1-28 颜色NG" loading="lazy" />
                 <div><span class="code-tag">ZSOHPP063</span><span class="img-caption">图 1-28 颜色 NG 督查</span></div>
             </div>
         </div>
@@ -1283,7 +1333,7 @@
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-30.png?raw=true" alt="1-30 WIP通报" loading="lazy">
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-30.png?raw=true" alt="1-30 WIP通报" loading="lazy" />
                 <div><span class="code-tag">邮件通报</span><span class="img-caption">图 1-30 WIP 通报</span></div>
             </div>
         </div>
@@ -1294,7 +1344,7 @@
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-31.png?raw=true" alt="1-31 QR通报" loading="lazy">
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-31.png?raw=true" alt="1-31 QR通报" loading="lazy" />
                 <div><span class="code-tag">周通报</span><span class="img-caption">图 1-31 QR 单周通报</span></div>
             </div>
         </div>
@@ -1311,7 +1361,7 @@
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-29.png?raw=true" alt="1-29 准时交货率" loading="lazy">
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-29.png?raw=true" alt="1-29 准时交货率" loading="lazy" />
                 <div><span class="code-tag">沟通协作</span><span class="img-caption">图 1-29 准时交货率沟通</span></div>
             </div>
         </div>
@@ -1329,140 +1379,140 @@
 <!-- ===== Lightbox ===== -->
 <div class="lightbox-overlay" id="lightbox">
     <div class="lightbox-close" id="lightboxClose">✕</div>
-    <img id="lightboxImg" src="" alt="放大图片">
+    <img id="lightboxImg" src="" alt="放大图片" />
 </div>
 
 <!-- ===== JavaScript ===== -->
 <script>
-// ============================================
-// 1. 图片放大 (Lightbox)
-// ============================================
-(function() {
-    const images = document.querySelectorAll('.img-card img');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightboxImg');
-    const closeBtn = document.getElementById('lightboxClose');
+    // ============================================
+    // 1. 图片放大 (Lightbox)
+    // ============================================
+    (function() {
+        const images = document.querySelectorAll('.img-card img');
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const closeBtn = document.getElementById('lightboxClose');
 
-    images.forEach(img => {
-        img.addEventListener('click', function(e) {
-            e.stopPropagation();
-            lightboxImg.src = this.src;
-            lightboxImg.alt = this.alt || '放大图片';
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
+        images.forEach(img => {
+            img.addEventListener('click', function(e) {
+                e.stopPropagation();
+                lightboxImg.src = this.src;
+                lightboxImg.alt = this.alt || '放大图片';
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
         });
-    });
 
-    function closeLightbox() {
-        lightbox.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-
-    closeBtn.addEventListener('click', closeLightbox);
-    lightbox.addEventListener('click', function(e) {
-        if (e.target === this) closeLightbox();
-    });
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-            closeLightbox();
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
         }
-    });
-})();
 
-// ============================================
-// 2. 步骤滚动高亮导航
-// ============================================
-(function() {
-    const steps = document.querySelectorAll('.step-desc');
-    if (steps.length === 0) return;
-
-    const nav = document.createElement('div');
-    nav.className = 'step-nav';
-    nav.id = 'stepNav';
-
-    const stepLabels = [
-        '交货需求资料',
-        'TORAY 交货计划',
-        'NON-TORAY 交货',
-        'CPO 交货清单',
-        'TORAY 步骤1',
-        'TORAY 步骤2',
-        'TORAY 步骤3',
-        'TORAY 步骤4',
-        'NON-TORAY 步骤1',
-        'NON-TORAY 步骤2',
-        'NON-TORAY 步骤3',
-        '急单跟进 ZSOHPP143',
-        'APP跟进 ZSOHPP190',
-        '染厂 WIP 分析',
-        '整理 WIP 分析',
-        '染整工单分析',
-        'QTC 查询',
-        'QTC 异常处理',
-        '6级布查询',
-        '6级布通报',
-        '颜色 NG 督查',
-        'WIP 邮件通报',
-        'QR 单周通报',
-        '准时交货率'
-    ];
-
-    steps.forEach((step, index) => {
-        const dot = document.createElement('div');
-        dot.className = 'nav-dot';
-        const tooltip = document.createElement('span');
-        tooltip.className = 'tooltip';
-        const label = stepLabels[index] || `步骤 ${index + 1}`;
-        tooltip.textContent = label;
-        dot.appendChild(tooltip);
-
-        dot.addEventListener('click', () => {
-            step.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        closeBtn.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === this) closeLightbox();
         });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
+    })();
 
-        nav.appendChild(dot);
-    });
+    // ============================================
+    // 2. 步骤滚动高亮导航
+    // ============================================
+    (function() {
+        const steps = document.querySelectorAll('.step-desc');
+        if (steps.length === 0) return;
 
-    document.body.appendChild(nav);
+        const nav = document.createElement('div');
+        nav.className = 'step-nav';
+        nav.id = 'stepNav';
 
-    let currentIndex = -1;
-
-    function updateActiveStep() {
-        let activeIndex = 0;
-        const windowHeight = window.innerHeight;
+        const stepLabels = [
+            '交期现状',
+            'TORAY 交货',
+            'NON-TORAY 交货',
+            'CPO 清单',
+            'TORAY-1',
+            'TORAY-2',
+            'TORAY-3',
+            'TORAY-4',
+            'NON-TORAY-1',
+            'NON-TORAY-2',
+            'NON-TORAY-3',
+            'ZSOHPP143',
+            'ZSOHPP190',
+            '染厂分析',
+            '整理分析',
+            '工单分析',
+            'QTC查询',
+            'QTC异常',
+            '6级布查询',
+            '6级布通报',
+            '颜色NG',
+            'WIP通报',
+            'QR周通报',
+            '准时交货率'
+        ];
 
         steps.forEach((step, index) => {
-            const rect = step.getBoundingClientRect();
-            if (rect.top < windowHeight * 0.4 && rect.bottom > 0) {
-                activeIndex = index;
+            const dot = document.createElement('div');
+            dot.className = 'nav-dot';
+            const tooltip = document.createElement('span');
+            tooltip.className = 'tooltip';
+            const label = stepLabels[index] || `步骤 ${index + 1}`;
+            tooltip.textContent = label;
+            dot.appendChild(tooltip);
+
+            dot.addEventListener('click', () => {
+                step.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            });
+
+            nav.appendChild(dot);
+        });
+
+        document.body.appendChild(nav);
+
+        let currentIndex = -1;
+
+        function updateActiveStep() {
+            let activeIndex = 0;
+            const windowHeight = window.innerHeight;
+
+            steps.forEach((step, index) => {
+                const rect = step.getBoundingClientRect();
+                if (rect.top < windowHeight * 0.4 && rect.bottom > 0) {
+                    activeIndex = index;
+                }
+            });
+
+            if (activeIndex !== currentIndex) {
+                const dots = nav.querySelectorAll('.nav-dot');
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === activeIndex);
+                });
+                steps.forEach((step, i) => {
+                    step.classList.toggle('highlight', i === activeIndex);
+                });
+                currentIndex = activeIndex;
+            }
+        }
+
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    updateActiveStep();
+                    ticking = false;
+                });
+                ticking = true;
             }
         });
 
-        if (activeIndex !== currentIndex) {
-            const dots = nav.querySelectorAll('.nav-dot');
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === activeIndex);
-            });
-            steps.forEach((step, i) => {
-                step.classList.toggle('highlight', i === activeIndex);
-            });
-            currentIndex = activeIndex;
-        }
-    }
-
-    let ticking = false;
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-            window.requestAnimationFrame(() => {
-                updateActiveStep();
-                ticking = false;
-            });
-            ticking = true;
-        }
-    });
-
-    setTimeout(updateActiveStep, 200);
-})();
+        setTimeout(updateActiveStep, 200);
+    })();
 </script>
 
 </body>
