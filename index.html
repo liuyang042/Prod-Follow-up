@@ -124,8 +124,8 @@
             align-items: center;
             gap: 1.2rem;
             position: relative;
-            /* 新增：柔和渐变背景 */
-            background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.05) 100%);
+            /* 浅蓝色渐变背景 */
+            background: linear-gradient(135deg, #d6eaf8 0%, #ebf5fb 100%);
             border-radius: 32px;
             padding: 1.5rem 2rem;
             box-shadow: 0 8px 20px rgba(0,0,0,0.02);
@@ -178,7 +178,6 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 0.1rem;
-            /* 新增：轻微文字阴影 */
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
         }
 
@@ -194,7 +193,6 @@
             backdrop-filter: blur(4px);
             border: 1px solid rgba(255, 255, 255, 0.4);
             transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
-            /* 新增：小图标 */
             display: inline-flex;
             align-items: center;
             gap: 6px;
@@ -576,7 +574,6 @@
             transition: all 0.3s ease;
             cursor: pointer;
             min-height: 100px;
-            /* 修复：移除固定比例和 cover，使用 contain 保证完整显示 */
             object-fit: contain;
             display: block;
             margin-bottom: 6px;
