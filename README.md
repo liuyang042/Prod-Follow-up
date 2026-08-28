@@ -47,11 +47,3 @@
 
 直接访问在线演示地址即可浏览完整的操作指引与流程说明：
 [https://liuyang042.github.io/Prod-Follow-up/](https://liuyang042.github.io/Prod-Follow-up/)
-
-如需本地查看，可克隆本仓库后直接在浏览器打开`index.html`文件。
-
-```bash
-git clone https://github.com/liuyang042/Prod-Follow-up.git
-cd Prod-Follow-up
-# 使用任意静态服务器预览，例如：
-npx serve .
