@@ -9,6 +9,76 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
+        /* ===== CSS 变量定义 ===== */
+        :root {
+            --bg-body: #f1f6fd;
+            --bg-container: rgba(255, 255, 255, 0.70);
+            --bg-container-solid: #ffffff;
+            --text-primary: #0f1e2f;
+            --text-secondary: #4a6a85;
+            --text-heading: #0b2b4a;
+            --text-link: #1f4b6e;
+            --border-subtle: rgba(0, 20, 40, 0.06);
+            --border-strong: rgba(0, 20, 40, 0.12);
+            --shadow-card: 0 40px 80px -20px rgba(0, 20, 40, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+            --accent: #1f4b6e;
+            --accent-light: #3875ac;
+            --accent-gold: #d99e4a;
+            --bg-card: rgba(255, 255, 255, 0.6);
+            --bg-toc: rgba(255, 255, 255, 0.45);
+            --bg-step: rgba(255, 255, 255, 0.6);
+            --bg-step-hover: rgba(255, 255, 255, 0.75);
+            --bg-img-card: rgba(255, 255, 255, 0.45);
+            --bg-note: rgba(252, 244, 232, 0.5);
+            --bg-footer: rgba(255, 255, 255, 0.35);
+            --bg-highlight: rgba(252, 248, 240, 0.7);
+            --bg-code-inline: rgba(234, 241, 250, 0.6);
+            --bg-nav-dot: rgba(220, 230, 242, 0.6);
+            --color-text-on-accent: white;
+            --color-text-remark: #1d3a53;
+            --color-text-note: #5a401f;
+            --color-border-img: rgba(220, 230, 242, 0.4);
+            --img-bg: #f8fafc;
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --backdrop-blur: blur(16px) saturate(180%);
+            --transition-speed: 0.3s;
+        }
+
+        /* 深色模式变量 */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #0d1b2a;
+                --bg-container: rgba(20, 35, 55, 0.65);
+                --bg-container-solid: #162b40;
+                --text-primary: #e8edf3;
+                --text-secondary: #8a9ab0;
+                --text-heading: #c8d8e8;
+                --text-link: #8ab0d8;
+                --border-subtle: rgba(255, 255, 255, 0.04);
+                --border-strong: rgba(255, 255, 255, 0.08);
+                --shadow-card: 0 40px 80px -20px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+                --accent: #2a5a7a;
+                --accent-light: #4a7aad;
+                --accent-gold: #d99e4a;
+                --bg-card: rgba(255, 255, 255, 0.03);
+                --bg-toc: rgba(255, 255, 255, 0.03);
+                --bg-step: rgba(255, 255, 255, 0.03);
+                --bg-step-hover: rgba(255, 255, 255, 0.05);
+                --bg-img-card: rgba(255, 255, 255, 0.03);
+                --bg-note: rgba(42, 37, 24, 0.3);
+                --bg-footer: rgba(255, 255, 255, 0.02);
+                --bg-highlight: rgba(252, 248, 240, 0.04);
+                --bg-code-inline: rgba(255, 255, 255, 0.04);
+                --bg-nav-dot: rgba(255, 255, 255, 0.06);
+                --color-text-on-accent: white;
+                --color-text-remark: #dce6f2;
+                --color-text-note: #e8d8b8;
+                --color-border-img: rgba(255, 255, 255, 0.04);
+                --img-bg: #0d1b2a;
+                --backdrop-blur: blur(20px) saturate(180%);
+            }
+        }
+
         /* ===== 全局重置 ===== */
         * {
             margin: 0;
@@ -17,34 +87,35 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #f1f6fd;
-            color: #0f1e2f;
+            font-family: var(--font-family);
+            background: var(--bg-body);
+            color: var(--text-primary);
             padding: 2rem 1.5rem;
             line-height: 1.6;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background 0.3s ease, color 0.3s ease;
+            transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
+            position: relative;
         }
 
-        /* ===== 主容器 — 毛玻璃质感 ===== */
+        /* ===== 主容器 ===== */
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.70);
-            backdrop-filter: blur(16px) saturate(180%);
-            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            background: var(--bg-container);
+            backdrop-filter: var(--backdrop-blur);
+            -webkit-backdrop-filter: var(--backdrop-blur);
             border-radius: 56px;
-            box-shadow: 0 40px 80px -20px rgba(0, 20, 40, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+            box-shadow: var(--shadow-card);
             padding: 2.8rem 3.2rem;
-            transition: all 0.2s ease;
+            transition: background var(--transition-speed) ease, border-color var(--transition-speed) ease;
         }
 
-        /* ===== 头部 — 精致排版 ===== */
+        /* ===== 头部 ===== */
         .header {
-            border-bottom: 1px solid rgba(0, 20, 40, 0.06);
+            border-bottom: 1px solid var(--border-subtle);
             padding-bottom: 1.8rem;
             margin-bottom: 2.6rem;
             display: flex;
@@ -58,18 +129,19 @@
             display: flex;
             align-items: center;
             gap: 1.2rem;
+            flex-wrap: wrap;
         }
 
         .logo-wrap {
-            background: rgba(255, 255, 255, 0.6);
+            background: var(--bg-card);
             border-radius: 60px;
             padding: 0.4rem 0.8rem 0.4rem 0.4rem;
             display: flex;
             align-items: center;
             gap: 0.75rem;
-            border: 1px solid rgba(0, 20, 40, 0.06);
+            border: 1px solid var(--border-subtle);
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-            transition: background 0.3s ease, border-color 0.3s ease;
+            transition: background var(--transition-speed) ease, border-color var(--transition-speed) ease;
         }
 
         .logo-wrap img {
@@ -85,16 +157,16 @@
             font-weight: 700;
             font-size: 1.2rem;
             letter-spacing: -0.3px;
-            color: #0b2b4a;
+            color: var(--text-heading);
             padding-right: 0.5rem;
-            transition: color 0.3s ease;
+            transition: color var(--transition-speed) ease;
         }
 
         .header-left h1 {
             font-size: 2.2rem;
             font-weight: 700;
             letter-spacing: -0.02em;
-            background: linear-gradient(145deg, #0a1e33, #1a4b70);
+            background: linear-gradient(145deg, var(--text-heading), var(--accent-light));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -104,7 +176,7 @@
         .header-left .subhead {
             font-size: 0.9rem;
             font-weight: 500;
-            color: #4a6a85;
+            color: var(--text-secondary);
             background: rgba(230, 242, 255, 0.6);
             display: inline-block;
             padding: 0.2rem 1.4rem;
@@ -112,7 +184,7 @@
             letter-spacing: 0.2px;
             backdrop-filter: blur(4px);
             border: 1px solid rgba(255, 255, 255, 0.4);
-            transition: background 0.3s ease, color 0.3s ease;
+            transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
         }
 
         .header-right {
@@ -126,27 +198,27 @@
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            background: rgba(255, 255, 255, 0.5);
+            background: var(--bg-card);
             backdrop-filter: blur(8px);
             padding: 0.4rem 1.6rem 0.4rem 2rem;
             border-radius: 60px;
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            border: 1px solid var(--border-subtle);
             box-shadow: 0 2px 8px rgba(0,0,0,0.02);
-            transition: background 0.3s ease, border-color 0.3s ease;
+            transition: background var(--transition-speed) ease, border-color var(--transition-speed) ease;
         }
 
         .author-name {
             font-weight: 700;
             font-size: 1rem;
-            color: #0b2b4a;
+            color: var(--text-heading);
             display: flex;
             align-items: center;
             gap: 6px;
-            transition: color 0.3s ease;
+            transition: color var(--transition-speed) ease;
         }
 
         .author-name i {
-            color: #3773a8;
+            color: var(--accent-light);
             font-size: 0.9rem;
         }
 
@@ -154,23 +226,23 @@
             font-size: 0.72rem;
             font-weight: 500;
             color: #2a577b;
-            background: rgba(255, 255, 255, 0.6);
+            background: var(--bg-card);
             padding: 0 12px;
             border-radius: 30px;
             letter-spacing: 0.2px;
-            transition: background 0.3s ease, color 0.3s ease;
+            transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
         }
 
-        /* ===== 目录 — 精致网格 ===== */
+        /* ===== 目录 ===== */
         .toc {
-            background: rgba(255, 255, 255, 0.45);
+            background: var(--bg-toc);
             backdrop-filter: blur(12px);
             border-radius: 32px;
             padding: 1.2rem 2.2rem;
             margin-bottom: 3rem;
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            border: 1px solid var(--border-subtle);
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
-            transition: background 0.3s ease, border-color 0.3s ease;
+            transition: background var(--transition-speed) ease, border-color var(--transition-speed) ease;
         }
 
         .toc-header {
@@ -187,12 +259,12 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            transition: color 0.3s ease;
+            transition: color var(--transition-speed) ease;
         }
 
         .toc-title span {
-            background: #1f4b6e;
-            color: white;
+            background: var(--accent);
+            color: var(--color-text-on-accent);
             padding: 0 16px;
             border-radius: 40px;
             font-size: 0.7rem;
@@ -213,7 +285,7 @@
             font-size: 0.88rem;
             color: #1a3c57;
             padding: 4px 0;
-            transition: color 0.3s ease;
+            transition: color var(--transition-speed) ease;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -221,8 +293,8 @@
 
         .toc-grid li .step-num {
             display: inline-block;
-            background: rgba(220, 230, 242, 0.6);
-            color: #1f4b6e;
+            background: var(--bg-code-inline);
+            color: var(--text-link);
             font-size: 0.6rem;
             font-weight: 700;
             padding: 0 8px;
@@ -230,7 +302,7 @@
             line-height: 1.8;
             min-width: 28px;
             text-align: center;
-            transition: background 0.3s ease, color 0.3s ease;
+            transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
         }
 
         .toc-grid li .step-icon {
@@ -253,12 +325,12 @@
             left: 0;
             width: 0;
             height: 1.5px;
-            background: #1f4b6e;
+            background: var(--text-link);
             transition: width 0.25s ease;
         }
 
         .toc-grid li a:hover {
-            color: #1f4b6e;
+            color: var(--text-link);
         }
         .toc-grid li a:hover::after {
             width: 100%;
@@ -279,18 +351,18 @@
             font-size: 2rem;
             font-weight: 700;
             letter-spacing: -0.01em;
-            color: #0b2b4a;
+            color: var(--text-heading);
             padding-bottom: 0.5rem;
-            border-bottom: 2px solid rgba(0, 20, 40, 0.06);
+            border-bottom: 2px solid var(--border-subtle);
             margin-bottom: 2.2rem;
             display: flex;
             align-items: center;
             gap: 14px;
-            transition: color 0.3s ease, border-color 0.3s ease;
+            transition: color var(--transition-speed) ease, border-color var(--transition-speed) ease;
         }
 
         .section-title .num {
-            background: linear-gradient(145deg, #1f4b6e, #0b2b4a);
+            background: linear-gradient(145deg, var(--accent), #0b2b4a);
             color: white;
             font-size: 1.2rem;
             font-weight: 600;
@@ -314,7 +386,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            transition: color 0.3s ease;
+            transition: color var(--transition-speed) ease;
         }
 
         .subsection h4 {
@@ -325,35 +397,36 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            transition: color 0.3s ease;
+            transition: color var(--transition-speed) ease;
         }
 
-        /* ===== 步骤卡片 — 极致精致 ===== */
+        /* ===== 步骤卡片 ===== */
         .step-desc {
-            background: rgba(255, 255, 255, 0.6);
+            background: var(--bg-step);
             backdrop-filter: blur(8px);
             padding: 1.2rem 2rem;
             border-radius: 24px;
-            border-left: 4px solid #3875ac;
+            border-left: 4px solid var(--accent-light);
             margin: 0.8rem 0 1.5rem 0;
             font-weight: 500;
-            color: #1d3a53;
+            color: var(--color-text-remark);
             box-shadow: 0 2px 8px rgba(0,0,0,0.02);
             transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             cursor: default;
             scroll-margin-top: 80px;
-            border: 1px solid rgba(255, 255, 255, 0.4);
+            border: 1px solid var(--border-subtle);
         }
 
         .step-desc:hover {
             transform: translateX(6px) scale(1.002);
             box-shadow: 0 8px 24px rgba(0, 20, 40, 0.06);
-            border-color: rgba(56, 117, 172, 0.15);
+            border-color: var(--border-strong);
+            background: var(--bg-step-hover);
         }
 
         .step-desc.highlight {
-            border-left-color: #d99e4a !important;
-            background: rgba(252, 248, 240, 0.7) !important;
+            border-left-color: var(--accent-gold) !important;
+            background: var(--bg-highlight) !important;
             backdrop-filter: blur(8px);
             box-shadow: 0 0 0 2px rgba(217, 158, 74, 0.12);
         }
@@ -362,17 +435,17 @@
             display: inline-block;
             margin-top: 6px;
             font-weight: 400;
-            background: rgba(234, 241, 250, 0.5);
+            background: var(--bg-code-inline);
             backdrop-filter: blur(4px);
             padding: 4px 18px;
             border-radius: 30px;
             font-size: 0.9rem;
-            transition: background 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: background var(--transition-speed) ease;
+            border: 1px solid var(--border-subtle);
         }
 
         .step-desc .code-inline {
-            background: rgba(234, 241, 250, 0.6);
+            background: var(--bg-code-inline);
             backdrop-filter: blur(4px);
             padding: 0.1rem 0.7rem;
             border-radius: 30px;
@@ -380,14 +453,14 @@
             font-weight: 600;
             color: #004080;
             font-size: 0.9rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid var(--border-subtle);
         }
 
         .step-desc .download-link {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            background: linear-gradient(145deg, #1f4b6e, #0b2b4a);
+            background: linear-gradient(145deg, var(--accent), #0b2b4a);
             color: white;
             padding: 0.25rem 1.2rem;
             border-radius: 30px;
@@ -408,29 +481,29 @@
         .step-desc .sub-operation {
             margin-top: 8px;
             font-weight: 400;
-            background: rgba(234, 241, 250, 0.4);
+            background: var(--bg-code-inline);
             backdrop-filter: blur(4px);
             padding: 6px 18px;
             border-radius: 30px;
             display: inline-block;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid var(--border-subtle);
         }
 
         .step-desc .sub-operation i {
             margin-right: 6px;
         }
 
-        /* ===== 注意事项 — 精致柔和 ===== */
+        /* ===== 注意事项 ===== */
         .note-box {
-            background: rgba(252, 244, 232, 0.5);
+            background: var(--bg-note);
             backdrop-filter: blur(8px);
             border-radius: 20px;
             padding: 1.2rem 2rem;
             margin: 1.5rem 0 2rem 0;
-            border-left: 4px solid #d99e4a;
-            color: #5a401f;
-            transition: background 0.3s ease, color 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-left: 4px solid var(--accent-gold);
+            color: var(--color-text-note);
+            transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
+            border: 1px solid var(--border-subtle);
         }
 
         .note-box strong {
@@ -459,12 +532,12 @@
         }
 
         .img-card {
-            background: rgba(255, 255, 255, 0.45);
+            background: var(--bg-img-card);
             backdrop-filter: blur(8px);
             border-radius: 20px;
             padding: 0.8rem 0.8rem 1rem 0.8rem;
             box-shadow: 0 2px 12px rgba(0,0,0,0.02);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            border: 1px solid var(--border-subtle);
             flex: 1 1 220px;
             min-width: 180px;
             text-align: center;
@@ -474,71 +547,77 @@
         .img-card:hover {
             transform: translateY(-8px) scale(1.01);
             box-shadow: 0 16px 40px rgba(0, 20, 40, 0.06);
-            border-color: rgba(255, 255, 255, 0.8);
+            border-color: var(--border-strong);
+        }
+
+        .img-card picture,
+        .img-card img {
+            display: block;
+            margin-bottom: 6px;
         }
 
         .img-card img {
             width: 100%;
             height: auto;
             border-radius: 14px;
-            border: 1px solid rgba(220, 230, 242, 0.4);
-            background: #f8fafc;
-            display: block;
-            margin-bottom: 6px;
+            border: 1px solid var(--color-border-img);
+            background: var(--img-bg);
             transition: all 0.3s ease;
             cursor: pointer;
             min-height: 100px;
+            aspect-ratio: 16 / 10; /* 提供占位比，防止 CLS */
+            object-fit: cover; /* 如果实际比例不同，可调整为 contain */
         }
 
         .img-card .img-caption {
             font-size: 0.8rem;
             font-weight: 500;
             color: #1f4a6e;
-            background: rgba(255, 255, 255, 0.5);
+            background: var(--bg-code-inline);
             backdrop-filter: blur(4px);
             padding: 0.2rem 0.8rem;
             border-radius: 40px;
             display: inline-block;
             margin-top: 4px;
-            transition: background 0.3s ease, color 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
+            border: 1px solid var(--border-subtle);
         }
 
         .img-card .code-tag {
             font-family: 'Inter', monospace;
-            background: rgba(231, 239, 249, 0.5);
+            background: var(--bg-code-inline);
             backdrop-filter: blur(4px);
             padding: 0.1rem 0.8rem;
             border-radius: 30px;
             font-size: 0.7rem;
             font-weight: 600;
             color: #004080;
-            transition: background 0.3s ease, color 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
+            border: 1px solid var(--border-subtle);
         }
 
         /* ===== 页脚 ===== */
         .footer-note {
             margin-top: 3.2rem;
             font-size: 0.9rem;
-            color: #3d5e7b;
-            background: rgba(255, 255, 255, 0.35);
+            color: var(--text-secondary);
+            background: var(--bg-footer);
             backdrop-filter: blur(12px);
             padding: 1rem 2.2rem;
             border-radius: 60px;
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.4);
+            border: 1px solid var(--border-subtle);
             font-weight: 500;
             display: flex;
             flex-wrap: wrap;
             align-items: center;
             justify-content: center;
             gap: 0.8rem 1.8rem;
-            transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+            transition: background var(--transition-speed) ease, border-color var(--transition-speed) ease, color var(--transition-speed) ease;
         }
 
         .footer-note .doc-badge {
-            background: linear-gradient(145deg, #1f4b6e, #0b2b4a);
+            background: linear-gradient(145deg, var(--accent), #0b2b4a);
             color: white;
             padding: 0.15rem 1.2rem;
             border-radius: 40px;
@@ -547,23 +626,25 @@
             box-shadow: 0 2px 8px rgba(31, 75, 110, 0.12);
         }
 
-        /* ===== 侧边导航 — 精致圆点 ===== */
+        /* ===== 侧边导航 ===== */
         .step-nav {
             position: fixed;
             right: 30px;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.5);
+            background: var(--bg-toc);
             backdrop-filter: blur(16px);
             padding: 14px 10px;
             border-radius: 40px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.4);
+            border: 1px solid var(--border-subtle);
             z-index: 100;
             display: none;
             flex-direction: column;
             gap: 10px;
-            transition: background 0.3s ease, border-color 0.3s ease;
+            transition: background var(--transition-speed) ease, border-color var(--transition-speed) ease;
+            role: navigation;
+            aria-label: "步骤导航";
         }
 
         @media (min-width: 1024px) {
@@ -576,20 +657,26 @@
             width: 10px;
             height: 10px;
             border-radius: 50%;
-            background: rgba(220, 230, 242, 0.6);
+            background: var(--bg-nav-dot);
             transition: all 0.3s ease;
             cursor: pointer;
             position: relative;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid var(--border-subtle);
+            padding: 0; /* 重置按钮默认样式 */
+            appearance: none;
+            -webkit-appearance: none;
         }
 
-        .step-nav .nav-dot:hover {
+        .step-nav .nav-dot:hover,
+        .step-nav .nav-dot:focus-visible {
             transform: scale(1.4);
-            background: #1f4b6e;
+            background: var(--accent);
+            outline: none;
+            box-shadow: 0 0 0 2px var(--accent-light);
         }
 
         .step-nav .nav-dot.active {
-            background: #1f4b6e;
+            background: var(--accent);
             box-shadow: 0 0 0 4px rgba(31, 75, 110, 0.08);
         }
 
@@ -609,14 +696,16 @@
             pointer-events: none;
             transition: all 0.3s ease;
             font-weight: 500;
+            z-index: 10;
         }
 
-        .step-nav .nav-dot:hover .tooltip {
+        .step-nav .nav-dot:hover .tooltip,
+        .step-nav .nav-dot:focus-visible .tooltip {
             opacity: 1;
             right: 30px;
         }
 
-        /* ===== Lightbox — 精致沉浸 ===== */
+        /* ===== Lightbox ===== */
         .lightbox-overlay {
             position: fixed;
             top: 0;
@@ -631,6 +720,9 @@
             z-index: 9999;
             padding: 20px;
             animation: fadeIn 0.3s ease;
+            role: dialog;
+            aria-modal: true;
+            aria-label: "图片放大预览";
         }
 
         .lightbox-overlay.active {
@@ -638,8 +730,8 @@
         }
 
         .lightbox-overlay img {
-            max-width: 92%;
-            max-height: 92%;
+            max-width: 88%;
+            max-height: 85%;
             object-fit: contain;
             border-radius: 16px;
             box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
@@ -665,11 +757,70 @@
             transition: all 0.3s ease;
             border: 1px solid rgba(255,255,255,0.12);
             backdrop-filter: blur(8px);
+            appearance: none;
+            -webkit-appearance: none;
         }
 
         .lightbox-close:hover {
             background: rgba(255,255,255,0.15);
             transform: rotate(90deg);
+        }
+
+        .lightbox-close:focus-visible {
+            outline: 2px solid white;
+            outline-offset: 2px;
+        }
+
+        .lightbox-nav {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10001;
+            transition: all 0.3s ease;
+            font-size: 20px;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .lightbox-nav:focus-visible {
+            outline: 2px solid white;
+            outline-offset: 2px;
+        }
+
+        .lightbox-prev {
+            left: 20px;
+        }
+
+        .lightbox-next {
+            right: 20px;
+        }
+
+        .lightbox-counter {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            background: rgba(0,0,0,0.5);
+            padding: 4px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            z-index: 10000;
+            pointer-events: none;
         }
 
         @keyframes fadeIn {
@@ -682,137 +833,80 @@
             to { transform: scale(1); opacity: 1; }
         }
 
-        /* ===== 深色模式 ===== */
-        @media (prefers-color-scheme: dark) {
-            body {
-                background: #0d1b2a;
-                color: #e8edf3;
-            }
-            .container {
-                background: rgba(20, 35, 55, 0.65);
-                backdrop-filter: blur(20px) saturate(180%);
-                border-color: rgba(255, 255, 255, 0.04);
-            }
-            .header {
-                border-color: rgba(255, 255, 255, 0.04);
-            }
+        /* ===== 阅读进度条 ===== */
+        .reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-light));
+            width: 0%;
+            z-index: 9998;
+            transition: width 0.1s linear;
+        }
+
+        /* ===== 返回顶部按钮 ===== */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: white;
+            border: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            cursor: pointer;
+            z-index: 900;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+
+        .back-to-top.visible {
+            display: flex;
+        }
+
+        .back-to-top:hover {
+            background: var(--accent-light);
+            transform: translateY(-3px);
+        }
+
+        /* ===== 毛玻璃降级（移动端/减少动效） ===== */
+        @media (max-width: 768px),
+               (prefers-reduced-motion: reduce) {
+            .container,
+            .toc,
+            .step-desc,
+            .note-box,
+            .img-card,
+            .author-block,
+            .footer-note,
             .logo-wrap {
-                background: rgba(255, 255, 255, 0.04);
-                border-color: rgba(255, 255, 255, 0.06);
+                backdrop-filter: none;
+                -webkit-backdrop-filter: none;
+                background: var(--bg-container-solid); /* 使用更不透明的背景 */
             }
-            .logo-wrap .brand-text {
-                color: #c8d8e8;
+            .step-desc:hover,
+            .img-card:hover {
+                transform: none;
             }
-            .header-left h1 {
-                background: linear-gradient(145deg, #c8d8e8, #8ab0d0);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-clip: text;
+            /* 保持可读性 */
+            .container {
+                background: var(--bg-container-solid);
             }
             .header-left .subhead {
-                background: rgba(255, 255, 255, 0.04);
-                color: #8a9ab0;
-                border-color: rgba(255, 255, 255, 0.04);
+                backdrop-filter: none;
             }
-            .author-block {
-                background: rgba(255, 255, 255, 0.04);
-                border-color: rgba(255, 255, 255, 0.06);
-            }
-            .author-name {
-                color: #c8d8e8;
-            }
-            .author-email {
-                background: rgba(255, 255, 255, 0.04);
-                color: #8ab0d0;
-            }
-            .toc {
-                background: rgba(255, 255, 255, 0.03);
-                border-color: rgba(255, 255, 255, 0.04);
-            }
-            .toc-title {
-                color: #b8c8d8;
-            }
-            .toc-grid li {
-                color: #b8c8d8;
-            }
-            .toc-grid li .step-num {
-                background: rgba(255, 255, 255, 0.04);
-                color: #8ab0d8;
-            }
-            .section-title {
-                color: #c8d8e8;
-                border-color: rgba(255, 255, 255, 0.04);
-            }
-            .section-title .num {
-                background: linear-gradient(145deg, #2a5a7a, #1a3a5a);
-            }
-            .subsection h3 {
-                color: #b8c8d8;
-            }
-            .subsection h4 {
-                color: #8ab0d0;
-            }
-            .step-desc {
-                background: rgba(255, 255, 255, 0.03);
-                border-color: rgba(255, 255, 255, 0.04);
-                color: #dce6f2;
-            }
-            .step-desc .remark {
-                background: rgba(255, 255, 255, 0.04);
-                color: #b8d0e8;
-                border-color: rgba(255, 255, 255, 0.04);
-            }
-            .step-desc .code-inline {
-                background: rgba(255, 255, 255, 0.04);
-                color: #8ab0d8;
-                border-color: rgba(255, 255, 255, 0.04);
-            }
+            .step-desc .remark,
+            .step-desc .code-inline,
             .step-desc .sub-operation {
-                background: rgba(255, 255, 255, 0.03);
-                color: #b8d0e8;
-                border-color: rgba(255, 255, 255, 0.04);
-            }
-            .step-desc.highlight {
-                background: rgba(252, 248, 240, 0.04) !important;
-            }
-            .img-card {
-                background: rgba(255, 255, 255, 0.03);
-                border-color: rgba(255, 255, 255, 0.04);
-            }
-            .img-card img {
-                border-color: rgba(255, 255, 255, 0.04);
-                background: #0d1b2a;
-            }
-            .img-card .img-caption {
-                background: rgba(255, 255, 255, 0.04);
-                color: #8ab0d0;
-                border-color: rgba(255, 255, 255, 0.04);
-            }
-            .img-card .code-tag {
-                background: rgba(255, 255, 255, 0.04);
-                color: #8ab0d8;
-                border-color: rgba(255, 255, 255, 0.04);
-            }
-            .note-box {
-                background: rgba(42, 37, 24, 0.3);
-                border-color: rgba(217, 158, 74, 0.15);
-                color: #e8d8b8;
-            }
-            .footer-note {
-                background: rgba(255, 255, 255, 0.02);
-                border-color: rgba(255, 255, 255, 0.04);
-                color: #b8c8d8;
-            }
-            .step-nav {
-                background: rgba(20, 35, 55, 0.5);
-                border-color: rgba(255, 255, 255, 0.04);
-            }
-            .step-nav .nav-dot {
-                background: rgba(255, 255, 255, 0.06);
-                border-color: rgba(255, 255, 255, 0.04);
-            }
-            .step-nav .nav-dot.active {
-                background: #4a7aad;
+                backdrop-filter: none;
             }
         }
 
@@ -871,6 +965,19 @@
                 height: 40px;
                 font-size: 20px;
             }
+            .lightbox-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+            .lightbox-prev { left: 10px; }
+            .lightbox-next { right: 10px; }
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 44px;
+                height: 44px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -889,7 +996,11 @@
         /* ===== 打印 ===== */
         @media print {
             .step-nav,
-            .lightbox-overlay {
+            .lightbox-overlay,
+            .reading-progress,
+            .back-to-top,
+            .lightbox-nav,
+            .lightbox-counter {
                 display: none !important;
             }
             .container {
@@ -915,10 +1026,17 @@
                 break-inside: avoid;
                 page-break-inside: avoid;
             }
+            .img-card img {
+                aspect-ratio: auto;
+                object-fit: contain;
+            }
         }
     </style>
 </head>
 <body>
+<!-- 阅读进度条 -->
+<div class="reading-progress" id="readingProgress" aria-hidden="true"></div>
+
 <div class="container">
 
     <!-- ===== 头部 ===== -->
@@ -935,8 +1053,8 @@
         </div>
         <div class="header-right">
             <div class="author-block">
-                <span class="author-name"><i class="fas fa-user-pen"></i> 刘洋</span>
-                <span class="author-email"><i class="far fa-envelope"></i> liu-yang@top-textiles.vn</span>
+                <span class="author-name"><i class="fas fa-user-pen" aria-hidden="true"></i> 刘洋</span>
+                <span class="author-email"><i class="far fa-envelope" aria-hidden="true"></i> liu-yang@top-textiles.vn</span>
             </div>
         </div>
     </div>
@@ -944,7 +1062,7 @@
     <!-- ===== 目录 ===== -->
     <div class="toc">
         <div class="toc-header">
-            <div class="toc-title"><i class="fas fa-list-ul"></i> 目录 <span>6 章节</span></div>
+            <div class="toc-title"><i class="fas fa-list-ul" aria-hidden="true"></i> 目录 <span>6 章节</span></div>
         </div>
         <ul class="toc-grid">
             <li><span class="step-num">01</span><span class="step-icon">📋</span><a href="#sec-1">交货需求资料</a></li>
@@ -961,46 +1079,55 @@
     <div class="section" id="sec-1">
         <div class="section-title"><span class="num">一</span> PPC 交货需求资料</div>
 
-        <div class="step-desc">
-            <i class="fas fa-info-circle" style="color:#3875ac;"></i>
+        <div class="step-desc" data-step-label="交期现状">
+            <i class="fas fa-info-circle" style="color:var(--accent-light);" aria-hidden="true"></i>
             当前系统交期现状与造成原因
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-1.png?raw=true" alt="1-1 交期现状" loading="lazy" />
+                <picture>
+                    <source type="image/webp" srcset="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-1.webp?raw=true">
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-1.png?raw=true" alt="图 1-1 交期现状" loading="lazy" decoding="async" width="800" height="500" />
+                </picture>
                 <div><span class="code-tag">交期现状</span><span class="img-caption">图 1-1 交期现状</span></div>
             </div>
         </div>
 
         <div class="subsection">
-            <h3><i class="fas fa-file-excel" style="color:#217346;"></i> TORAY 交货计划资料</h3>
-            <div class="step-desc">
-                <i class="fas fa-download" style="color:#217346;"></i>
+            <h3><i class="fas fa-file-excel" style="color:#217346;" aria-hidden="true"></i> TORAY 交货计划资料</h3>
+            <div class="step-desc" data-step-label="TORAY 交货">
+                <i class="fas fa-download" style="color:#217346;" aria-hidden="true"></i>
                 EXCEL 附件下载：
                 <a href="https://github.com/liuyang042/Prod-Follow-up/blob/main/Toray_CBD-update.xlsx?raw=true" class="download-link" download>
-                    <i class="fas fa-file-excel"></i> Toray_CBD-update.xlsx
+                    <i class="fas fa-file-excel" aria-hidden="true"></i> Toray_CBD-update.xlsx
                 </a>
             </div>
             <div class="img-grid">
                 <div class="img-card">
-                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-2.png?raw=true" alt="1-2 TORAY 交货计划" loading="lazy" />
+                    <picture>
+                        <source type="image/webp" srcset="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-2.webp?raw=true">
+                        <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-2.png?raw=true" alt="图 1-2 TORAY 交货计划" loading="lazy" decoding="async" width="800" height="500" />
+                    </picture>
                     <div><span class="code-tag">TORAY</span><span class="img-caption">图 1-2 TORAY 交货计划</span></div>
                 </div>
             </div>
         </div>
 
         <div class="subsection">
-            <h3><i class="fas fa-file-excel" style="color:#217346;"></i> NON-TORAY 交货计划资料</h3>
-            <div class="step-desc">
-                <i class="fas fa-download" style="color:#217346;"></i>
+            <h3><i class="fas fa-file-excel" style="color:#217346;" aria-hidden="true"></i> NON-TORAY 交货计划资料</h3>
+            <div class="step-desc" data-step-label="NON-TORAY 交货">
+                <i class="fas fa-download" style="color:#217346;" aria-hidden="true"></i>
                 EXCEL 附件下载：
                 <a href="https://github.com/liuyang042/Prod-Follow-up/blob/main/Bulk_urgent_Order_Non_Toray.xlsx?raw=true" class="download-link" download>
-                    <i class="fas fa-file-excel"></i> Bulk_urgent_Order_Non_Toray.xlsx
+                    <i class="fas fa-file-excel" aria-hidden="true"></i> Bulk_urgent_Order_Non_Toray.xlsx
                 </a>
             </div>
             <div class="img-grid">
                 <div class="img-card">
-                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-3.png?raw=true" alt="1-3 NON-TORAY 交货计划" loading="lazy" />
+                    <picture>
+                        <source type="image/webp" srcset="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-3.webp?raw=true">
+                        <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-3.png?raw=true" alt="图 1-3 NON-TORAY 交货计划" loading="lazy" decoding="async" width="800" height="500" />
+                    </picture>
                     <div><span class="code-tag">NON-TORAY</span><span class="img-caption">图 1-3 NON-TORAY 交货计划</span></div>
                 </div>
             </div>
@@ -1012,86 +1139,101 @@
     <div class="section" id="sec-2">
         <div class="section-title"><span class="num">二</span> CPO 交货清单</div>
 
-        <div class="step-desc">
-            <i class="fas fa-bullseye" style="color:#3875ac;"></i>
+        <div class="step-desc" data-step-label="CPO 清单">
+            <i class="fas fa-bullseye" style="color:var(--accent-light);" aria-hidden="true"></i>
             CPO 输出明细交货清单，推动生产部门以实际交期优先安排生产。
         </div>
 
         <!-- TORAY -->
         <div class="subsection">
-            <h3><i class="fas fa-warehouse" style="color:#2b5f8a;"></i> STOCK + WIP（TORAY）</h3>
+            <h3><i class="fas fa-warehouse" style="color:#2b5f8a;" aria-hidden="true"></i> STOCK + WIP（TORAY）</h3>
             <div class="img-grid">
                 <div class="img-card">
-                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-4.png?raw=true" alt="1-4 TORAY 库存WIP" loading="lazy" />
+                    <picture>
+                        <source type="image/webp" srcset="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-4.webp?raw=true">
+                        <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-4.png?raw=true" alt="图 1-4 STOCK+WIP（TORAY）" loading="lazy" decoding="async" width="800" height="500" />
+                    </picture>
                     <div><span class="code-tag">TORAY</span><span class="img-caption">图 1-4 STOCK+WIP（TORAY）</span></div>
                 </div>
             </div>
 
-            <h4><i class="fas fa-step-forward" style="color:#3a6b8f;"></i> 操作步骤</h4>
+            <h4><i class="fas fa-step-forward" style="color:#3a6b8f;" aria-hidden="true"></i> 操作步骤</h4>
 
-            <div class="step-desc" data-step="2-1">
-                <i class="fas fa-1" style="color:#3875ac;"></i>
+            <div class="step-desc" data-step-label="TORAY-1">
+                <i class="fas fa-1" style="color:var(--accent-light);" aria-hidden="true"></i>
                 <strong>第一步：</strong>处理交货需求数据（TORAY）
                 <span class="remark">根据 PPC 提供的数据，利用 EXCEL 工具：<strong>Toray_CBD_CPO.xlsm</strong>，分析出具体各布号的交货计划。</span>
                 <div style="margin-top:8px;">
                     <a href="https://github.com/liuyang042/Prod-Follow-up/blob/main/Toray_CBD_CPO.xlsm?raw=true" class="download-link" download>
-                        <i class="fas fa-file-excel"></i> Toray_CBD_CPO.xlsm
+                        <i class="fas fa-file-excel" aria-hidden="true"></i> Toray_CBD_CPO.xlsm
                     </a>
                 </div>
             </div>
             <div class="img-grid">
                 <div class="img-card">
-                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-6.png?raw=true" alt="1-6 TORAY 交货计划分析" loading="lazy" />
+                    <picture>
+                        <source type="image/webp" srcset="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-6.webp?raw=true">
+                        <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-6.png?raw=true" alt="图 1-6 交货计划分析" loading="lazy" decoding="async" width="800" height="500" />
+                    </picture>
                     <div><span class="code-tag">分析工具</span><span class="img-caption">图 1-6 交货计划分析</span></div>
                 </div>
             </div>
 
-            <div class="step-desc" data-step="2-2">
-                <i class="fas fa-2" style="color:#3875ac;"></i>
+            <div class="step-desc" data-step-label="TORAY-2">
+                <i class="fas fa-2" style="color:var(--accent-light);" aria-hidden="true"></i>
                 <strong>第二步：</strong>分析库存数据（TORAY）
                 <span class="remark">根据 ZSOHWM014 的成品库存数据（库存地点：1030+103T+1200+1202），利用 EXCEL 工具：<strong>STOCK-TORAY.xlsm</strong> 分析出可走货和不可走货数据。</span>
                 <div style="margin-top:8px;">
                     <a href="https://github.com/liuyang042/Prod-Follow-up/blob/main/STOCK-TORAY.xlsm?raw=true" class="download-link" download>
-                        <i class="fas fa-file-excel"></i> STOCK-TORAY.xlsm
+                        <i class="fas fa-file-excel" aria-hidden="true"></i> STOCK-TORAY.xlsm
                     </a>
                 </div>
             </div>
             <div class="img-grid">
                 <div class="img-card">
-                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-7.png?raw=true" alt="1-7 库存分析" loading="lazy" />
+                    <picture>
+                        <source type="image/webp" srcset="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-7.webp?raw=true">
+                        <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-7.png?raw=true" alt="图 1-7 库存分析" loading="lazy" decoding="async" width="800" height="500" />
+                    </picture>
                     <div><span class="code-tag">库存分析</span><span class="img-caption">图 1-7 库存分析</span></div>
                 </div>
             </div>
 
-            <div class="step-desc" data-step="2-3">
-                <i class="fas fa-3" style="color:#3875ac;"></i>
+            <div class="step-desc" data-step-label="TORAY-3">
+                <i class="fas fa-3" style="color:var(--accent-light);" aria-hidden="true"></i>
                 <strong>第三步：</strong>分析 WIP 数据（TORAY）
                 <span class="remark">根据 BI 报表 PP02，利用 EXCEL 工具：<strong>WIP_progress_analysis.xlsm</strong> 分析出各布号的 WIP 情况。</span>
                 <div style="margin-top:8px;">
                     <a href="https://github.com/liuyang042/Prod-Follow-up/blob/main/WIP_progress_analysis.xlsm?raw=true" class="download-link" download>
-                        <i class="fas fa-file-excel"></i> WIP_progress_analysis.xlsm
+                        <i class="fas fa-file-excel" aria-hidden="true"></i> WIP_progress_analysis.xlsm
                     </a>
                 </div>
             </div>
             <div class="img-grid">
                 <div class="img-card">
-                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-8.png?raw=true" alt="1-8 WIP分析" loading="lazy" />
+                    <picture>
+                        <source type="image/webp" srcset="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-8.webp?raw=true">
+                        <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-8.png?raw=true" alt="图 1-8 WIP 分析" loading="lazy" decoding="async" width="800" height="500" />
+                    </picture>
                     <div><span class="code-tag">WIP分析</span><span class="img-caption">图 1-8 WIP 分析</span></div>
                 </div>
             </div>
 
-            <div class="step-desc" data-step="2-4">
-                <i class="fas fa-4" style="color:#3875ac;"></i>
+            <div class="step-desc" data-step-label="TORAY-4">
+                <i class="fas fa-4" style="color:var(--accent-light);" aria-hidden="true"></i>
                 <strong>第四步：</strong>整合交货需求、库存数据和 WIP 数据，邮件发送交货清单（TORAY）
                 <div style="margin-top:8px;">
                     <a href="https://github.com/liuyang042/Prod-Follow-up/blob/main/TORAY-2026.08.26.xlsx?raw=true" class="download-link" download>
-                        <i class="fas fa-file-excel"></i> TORAY-2026.08.26.xlsx
+                        <i class="fas fa-file-excel" aria-hidden="true"></i> TORAY-2026.08.26.xlsx
                     </a>
                 </div>
             </div>
             <div class="img-grid">
                 <div class="img-card">
-                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-9.png?raw=true" alt="1-9 邮件发送" loading="lazy" />
+                    <picture>
+                        <source type="image/webp" srcset="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-9.webp?raw=true">
+                        <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-9.png?raw=true" alt="图 1-9 邮件发送" loading="lazy" decoding="async" width="800" height="500" />
+                    </picture>
                     <div><span class="code-tag">邮件发送</span><span class="img-caption">图 1-9 交货清单邮件</span></div>
                 </div>
             </div>
@@ -1099,57 +1241,69 @@
 
         <!-- NON-TORAY -->
         <div class="subsection">
-            <h3><i class="fas fa-warehouse" style="color:#8a6e9b;"></i> STOCK + WIP（NON-TORAY）</h3>
+            <h3><i class="fas fa-warehouse" style="color:#8a6e9b;" aria-hidden="true"></i> STOCK + WIP（NON-TORAY）</h3>
             <div class="img-grid">
                 <div class="img-card">
-                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-5.png?raw=true" alt="1-5 NON-TORAY 库存WIP" loading="lazy" />
+                    <picture>
+                        <source type="image/webp" srcset="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-5.webp?raw=true">
+                        <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-5.png?raw=true" alt="图 1-5 NON-TORAY 库存WIP" loading="lazy" decoding="async" width="800" height="500" />
+                    </picture>
                     <div><span class="code-tag">NON-TORAY</span><span class="img-caption">图 1-5 STOCK+WIP（NON-TORAY）</span></div>
                 </div>
             </div>
 
-            <h4><i class="fas fa-step-forward" style="color:#3a6b8f;"></i> 操作步骤</h4>
+            <h4><i class="fas fa-step-forward" style="color:#3a6b8f;" aria-hidden="true"></i> 操作步骤</h4>
 
-            <div class="step-desc" data-step="2-5">
-                <i class="fas fa-1" style="color:#8a6e9b;"></i>
+            <div class="step-desc" data-step-label="NON-TORAY-1">
+                <i class="fas fa-1" style="color:#8a6e9b;" aria-hidden="true"></i>
                 <strong>第一步：</strong>处理交货需求数据（NON-TORAY）
                 <span class="remark">根据 PPC 提供的数据，利用 EXCEL 工具：<strong>PERSONAL.XLSB!NON_TORAY_DATA</strong> 分析各销售订单的交货计划。</span>
                 <div style="margin-top:8px;">
                     <a href="https://github.com/liuyang042/TOPT-Excel-storage/blob/main/Excel_Tools/PERSONAL.XLSB?raw=true" class="download-link" download>
-                        <i class="fas fa-file-excel"></i> PERSONAL.XLSB
+                        <i class="fas fa-file-excel" aria-hidden="true"></i> PERSONAL.XLSB
                     </a>
                 </div>
             </div>
             <div class="img-grid">
                 <div class="img-card">
-                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-11.png?raw=true" alt="1-11 NON-TORAY 分析" loading="lazy" />
+                    <picture>
+                        <source type="image/webp" srcset="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-11.webp?raw=true">
+                        <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-11.png?raw=true" alt="图 1-11 NON-TORAY 分析" loading="lazy" decoding="async" width="800" height="500" />
+                    </picture>
                     <div><span class="code-tag">分析工具</span><span class="img-caption">图 1-11 NON-TORAY 分析</span></div>
                 </div>
             </div>
 
-            <div class="step-desc" data-step="2-6">
-                <i class="fas fa-2" style="color:#8a6e9b;"></i>
+            <div class="step-desc" data-step-label="NON-TORAY-2">
+                <i class="fas fa-2" style="color:#8a6e9b;" aria-hidden="true"></i>
                 <strong>第二步：</strong>分析库存数据和 WIP 数据（NON-TORAY）
                 <span class="remark">根据 ZSOHWM014 的成品库存数据（库存地点：1030+103T+1200+1202）和 BI 报表 PP02，利用 EXCEL 工具分析。</span>
                 <div style="margin-top:8px;">
                     <a href="https://github.com/liuyang042/Prod-Follow-up/blob/main/(NON%20TORAY)STOCK%2BWIP%202026.08.27.xlsm?raw=true" class="download-link" download>
-                        <i class="fas fa-file-excel"></i> (NON TORAY)STOCK+WIP 2026.08.27.xlsm
+                        <i class="fas fa-file-excel" aria-hidden="true"></i> (NON TORAY)STOCK+WIP 2026.08.27.xlsm
                     </a>
                 </div>
             </div>
             <div class="img-grid">
                 <div class="img-card">
-                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-10.png?raw=true" alt="1-10 库存WIP分析" loading="lazy" />
+                    <picture>
+                        <source type="image/webp" srcset="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-10.webp?raw=true">
+                        <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-10.png?raw=true" alt="图 1-10 库存+WIP分析" loading="lazy" decoding="async" width="800" height="500" />
+                    </picture>
                     <div><span class="code-tag">库存WIP</span><span class="img-caption">图 1-10 库存+WIP分析</span></div>
                 </div>
             </div>
 
-            <div class="step-desc" data-step="2-7">
-                <i class="fas fa-3" style="color:#8a6e9b;"></i>
+            <div class="step-desc" data-step-label="NON-TORAY-3">
+                <i class="fas fa-3" style="color:#8a6e9b;" aria-hidden="true"></i>
                 <strong>第三步：</strong>整合交货需求、库存数据和 WIP 数据，邮件发送交货清单（NON-TORAY）
             </div>
             <div class="img-grid">
                 <div class="img-card">
-                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-12.png?raw=true" alt="1-12 邮件发送" loading="lazy" />
+                    <picture>
+                        <source type="image/webp" srcset="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-12.webp?raw=true">
+                        <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-12.png?raw=true" alt="图 1-12 邮件发送" loading="lazy" decoding="async" width="800" height="500" />
+                    </picture>
                     <div><span class="code-tag">邮件发送</span><span class="img-caption">图 1-12 交货清单邮件</span></div>
                 </div>
             </div>
@@ -1161,88 +1315,115 @@
     <div class="section" id="sec-3">
         <div class="section-title"><span class="num">三</span> 生产进度跟进方法</div>
 
-        <div class="step-desc" data-step="3-1">
-            <i class="fas fa-1" style="color:#3875ac;"></i>
+        <div class="step-desc" data-step-label="ZSOHPP143">
+            <i class="fas fa-1" style="color:var(--accent-light);" aria-hidden="true"></i>
             按照交货需求将急单缸号录入 SAP 系统 <span class="code-inline">ZSOHPP143</span>（大货急单跟进系统）
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-13.png?raw=true" alt="1-13 ZSOHPP143" loading="lazy" />
+                <picture>
+                    <source type="image/webp" srcset="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-13.webp?raw=true">
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-13.png?raw=true" alt="图 1-13 ZSOHPP143" loading="lazy" decoding="async" width="800" height="500" />
+                </picture>
                 <div><span class="code-tag">ZSOHPP143</span><span class="img-caption">图 1-13 大货急单跟进</span></div>
             </div>
         </div>
 
-        <div class="step-desc" data-step="3-2">
-            <i class="fas fa-2" style="color:#3875ac;"></i>
+        <div class="step-desc" data-step-label="ZSOHPP190">
+            <i class="fas fa-2" style="color:var(--accent-light);" aria-hidden="true"></i>
             将 APP 缸号录入 SAP 系统 <span class="code-inline">ZSOHPP190</span>（APP 急单跟进系统）
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-14.png?raw=true" alt="1-14 ZSOHPP190" loading="lazy" />
+                <picture>
+                    <source type="image/webp" srcset="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-14.webp?raw=true">
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-14.png?raw=true" alt="图 1-14 ZSOHPP190" loading="lazy" decoding="async" width="800" height="500" />
+                </picture>
                 <div><span class="code-tag">ZSOHPP190</span><span class="img-caption">图 1-14 APP 急单跟进</span></div>
             </div>
         </div>
 
-        <div class="step-desc" data-step="3-3">
-            <i class="fas fa-3" style="color:#3875ac;"></i>
+        <div class="step-desc" data-step-label="染厂分析">
+            <i class="fas fa-3" style="color:var(--accent-light);" aria-hidden="true"></i>
             CPO 分析 WIP 工单的状态，染厂车间跟进
             <div style="margin-top:8px;">
                 <a href="https://github.com/liuyang042/Prod-Follow-up/blob/main/Urgent_Order_Analysis_Dyeing.xlsm?raw=true" class="download-link" download>
-                    <i class="fas fa-file-excel"></i> Urgent_Order_Analysis_Dyeing.xlsm
+                    <i class="fas fa-file-excel" aria-hidden="true"></i> Urgent_Order_Analysis_Dyeing.xlsm
                 </a>
             </div>
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-15.png?raw=true" alt="1-15 染厂分析" loading="lazy" />
+                <picture>
+                    <source type="image/webp" srcset="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-15.webp?raw=true">
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-15.png?raw=true" alt="图 1-15 染厂 WIP 分析" loading="lazy" decoding="async" width="800" height="500" />
+                </picture>
                 <div><span class="code-tag">染厂</span><span class="img-caption">图 1-15 染厂 WIP 分析</span></div>
             </div>
         </div>
 
-        <div class="step-desc" data-step="3-4">
-            <i class="fas fa-4" style="color:#3875ac;"></i>
+        <div class="step-desc" data-step-label="整理分析">
+            <i class="fas fa-4" style="color:var(--accent-light);" aria-hidden="true"></i>
             CPO 分析 WIP 工单的状态，整理车间跟进
             <div style="margin-top:8px;">
                 <a href="https://github.com/liuyang042/Prod-Follow-up/blob/main/Urgent_Order_Analysis_Finishing.xlsm?raw=true" class="download-link" download>
-                    <i class="fas fa-file-excel"></i> Urgent_Order_Analysis_Finishing.xlsm
+                    <i class="fas fa-file-excel" aria-hidden="true"></i> Urgent_Order_Analysis_Finishing.xlsm
                 </a>
             </div>
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-16.png?raw=true" alt="1-16 整理分析" loading="lazy" />
+                <picture>
+                    <source type="image/webp" srcset="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-16.webp?raw=true">
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-16.png?raw=true" alt="图 1-16 整理 WIP 分析" loading="lazy" decoding="async" width="800" height="500" />
+                </picture>
                 <div><span class="code-tag">整理</span><span class="img-caption">图 1-16 整理 WIP 分析</span></div>
             </div>
         </div>
 
-        <div class="step-desc" data-step="3-5">
-            <i class="fas fa-5" style="color:#3875ac;"></i>
+        <div class="step-desc" data-step-label="工单分析">
+            <i class="fas fa-5" style="color:var(--accent-light);" aria-hidden="true"></i>
             利用染整工单分析工具分析工单数据
             <div style="margin-top:8px;">
                 <a href="https://github.com/liuyang042/Prod-Follow-up/blob/main/Urgent%20Order%20Production%20Data%20Analysis.xlsm?raw=true" class="download-link" download>
-                    <i class="fas fa-file-excel"></i> Urgent Order Production Data Analysis.xlsm
+                    <i class="fas fa-file-excel" aria-hidden="true"></i> Urgent Order Production Data Analysis.xlsm
                 </a>
             </div>
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-17.png?raw=true" alt="1-17 分析1" loading="lazy" />
+                <picture>
+                    <source type="image/webp" srcset="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-17.webp?raw=true">
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-17.png?raw=true" alt="图 1-17 工单分析" loading="lazy" decoding="async" width="800" height="500" />
+                </picture>
                 <div><span class="code-tag">分析工具</span><span class="img-caption">图 1-17 工单分析</span></div>
             </div>
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-18.png?raw=true" alt="1-18 分析2" loading="lazy" />
+                <picture>
+                    <source type="image/webp" srcset="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-18.webp?raw=true">
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-18.png?raw=true" alt="图 1-18 工单分析" loading="lazy" decoding="async" width="800" height="500" />
+                </picture>
                 <div><span class="code-tag">分析工具</span><span class="img-caption">图 1-18 工单分析</span></div>
             </div>
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-19.png?raw=true" alt="1-19 分析3" loading="lazy" />
+                <picture>
+                    <source type="image/webp" srcset="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-19.webp?raw=true">
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-19.png?raw=true" alt="图 1-19 工单分析" loading="lazy" decoding="async" width="800" height="500" />
+                </picture>
                 <div><span class="code-tag">分析工具</span><span class="img-caption">图 1-19 工单分析</span></div>
             </div>
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-20.png?raw=true" alt="1-20 分析4" loading="lazy" />
+                <picture>
+                    <source type="image/webp" srcset="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-20.webp?raw=true">
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-20.png?raw=true" alt="图 1-20 工单分析" loading="lazy" decoding="async" width="800" height="500" />
+                </picture>
                 <div><span class="code-tag">分析工具</span><span class="img-caption">图 1-20 工单分析</span></div>
             </div>
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-21.png?raw=true" alt="1-21 分析5" loading="lazy" />
+                <picture>
+                    <source type="image/webp" srcset="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-21.webp?raw=true">
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-21.png?raw=true" alt="图 1-21 工单分析" loading="lazy" decoding="async" width="800" height="500" />
+                </picture>
                 <div><span class="code-tag">分析工具</span><span class="img-caption">图 1-21 工单分析</span></div>
             </div>
         </div>
@@ -1253,70 +1434,91 @@
     <div class="section" id="sec-4">
         <div class="section-title"><span class="num">四</span> 品质异常跟进处理</div>
 
-        <div class="step-desc" data-step="4-1">
-            <i class="fas fa-flask" style="color:#b8860b;"></i>
+        <div class="step-desc" data-step-label="QTC查询">
+            <i class="fas fa-flask" style="color:#b8860b;" aria-hidden="true"></i>
             <strong>QTC 测试结果查询</strong> — 功能代码：<span class="code-inline">ZSOHQM031</span>
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-22.png?raw=true" alt="1-22 QTC查询" loading="lazy" />
+                <picture>
+                    <source type="image/webp" srcset="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-22.webp?raw=true">
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-22.png?raw=true" alt="图 1-22 QTC 查询" loading="lazy" decoding="async" width="800" height="500" />
+                </picture>
                 <div><span class="code-tag">ZSOHQM031</span><span class="img-caption">图 1-22 QTC 查询</span></div>
             </div>
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-23.png?raw=true" alt="1-23 QTC结果" loading="lazy" />
+                <picture>
+                    <source type="image/webp" srcset="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-23.webp?raw=true">
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-23.png?raw=true" alt="图 1-23 QTC 结果" loading="lazy" decoding="async" width="800" height="500" />
+                </picture>
                 <div><span class="code-tag">QTC 结果</span><span class="img-caption">图 1-23 QTC 结果</span></div>
             </div>
         </div>
 
-        <div class="step-desc" data-step="4-2">
-            <i class="fas fa-envelope" style="color:#b8860b;"></i>
+        <div class="step-desc" data-step-label="QTC异常">
+            <i class="fas fa-envelope" style="color:#b8860b;" aria-hidden="true"></i>
             <strong>QTC 测试结果异常处理</strong> — 每天邮件通报待处理 QTC 测试结果异常清单，督促生产部门处理
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-24.png?raw=true" alt="1-24 QTC异常" loading="lazy" />
+                <picture>
+                    <source type="image/webp" srcset="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-24.webp?raw=true">
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-24.png?raw=true" alt="图 1-24 QTC 异常通报" loading="lazy" decoding="async" width="800" height="500" />
+                </picture>
                 <div><span class="code-tag">异常通报</span><span class="img-caption">图 1-24 QTC 异常通报</span></div>
             </div>
         </div>
 
-        <div class="step-desc" data-step="4-3">
-            <i class="fas fa-layer-group" style="color:#b8860b;"></i>
+        <div class="step-desc" data-step-label="6级布查询">
+            <i class="fas fa-layer-group" style="color:#b8860b;" aria-hidden="true"></i>
             <strong>6 级布问题查询</strong> — 功能代码：<span class="code-inline">ZSOHQM010</span>
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-25.png?raw=true" alt="1-25 6级布查询" loading="lazy" />
+                <picture>
+                    <source type="image/webp" srcset="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-25.webp?raw=true">
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-25.png?raw=true" alt="图 1-25 6 级布查询" loading="lazy" decoding="async" width="800" height="500" />
+                </picture>
                 <div><span class="code-tag">ZSOHQM010</span><span class="img-caption">图 1-25 6 级布查询</span></div>
             </div>
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-26.png?raw=true" alt="1-26 6级布结果" loading="lazy" />
+                <picture>
+                    <source type="image/webp" srcset="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-26.webp?raw=true">
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-26.png?raw=true" alt="图 1-26 6 级布结果" loading="lazy" decoding="async" width="800" height="500" />
+                </picture>
                 <div><span class="code-tag">查询结果</span><span class="img-caption">图 1-26 6 级布结果</span></div>
             </div>
         </div>
 
-        <div class="step-desc" data-step="4-4">
-            <i class="fas fa-envelope" style="color:#b8860b;"></i>
+        <div class="step-desc" data-step-label="6级布通报">
+            <i class="fas fa-envelope" style="color:#b8860b;" aria-hidden="true"></i>
             <strong>6 级布问题处理进度通报</strong> — 每周邮件通报 6 级布问题处理进度，督促生产部门处理
             <div style="margin-top:8px;">
                 <a href="https://github.com/liuyang042/Prod-Follow-up/blob/main/6%E7%BA%A7%E5%B8%832026.08.26.xlsx?raw=true" class="download-link" download>
-                    <i class="fas fa-file-excel"></i> 6级布2026.08.26.xlsx
+                    <i class="fas fa-file-excel" aria-hidden="true"></i> 6级布2026.08.26.xlsx
                 </a>
             </div>
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-27.png?raw=true" alt="1-27 6级布通报" loading="lazy" />
+                <picture>
+                    <source type="image/webp" srcset="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-27.webp?raw=true">
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-27.png?raw=true" alt="图 1-27 6 级布通报" loading="lazy" decoding="async" width="800" height="500" />
+                </picture>
                 <div><span class="code-tag">进度通报</span><span class="img-caption">图 1-27 6 级布通报</span></div>
             </div>
         </div>
 
-        <div class="step-desc" data-step="4-5">
-            <i class="fas fa-eye" style="color:#b8860b;"></i>
+        <div class="step-desc" data-step-label="颜色NG">
+            <i class="fas fa-eye" style="color:#b8860b;" aria-hidden="true"></i>
             <strong>督查 QA 颜色 NG 的数据</strong> — 通知出方人及时处理。功能代码：<span class="code-inline">ZSOHPP063</span>
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-28.png?raw=true" alt="1-28 颜色NG" loading="lazy" />
+                <picture>
+                    <source type="image/webp" srcset="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-28.webp?raw=true">
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-28.png?raw=true" alt="图 1-28 颜色 NG 督查" loading="lazy" decoding="async" width="800" height="500" />
+                </picture>
                 <div><span class="code-tag">ZSOHPP063</span><span class="img-caption">图 1-28 颜色 NG 督查</span></div>
             </div>
         </div>
@@ -1327,24 +1529,30 @@
     <div class="section" id="sec-5">
         <div class="section-title"><span class="num">五</span> QR 单特别跟进数据</div>
 
-        <div class="step-desc" data-step="5-1">
-            <i class="fas fa-envelope" style="color:#2b5f8a;"></i>
+        <div class="step-desc" data-step-label="WIP通报">
+            <i class="fas fa-envelope" style="color:#2b5f8a;" aria-hidden="true"></i>
             每天邮件通报 WIP 情况
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-30.png?raw=true" alt="1-30 WIP通报" loading="lazy" />
+                <picture>
+                    <source type="image/webp" srcset="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-30.webp?raw=true">
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-30.png?raw=true" alt="图 1-30 WIP 通报" loading="lazy" decoding="async" width="800" height="500" />
+                </picture>
                 <div><span class="code-tag">邮件通报</span><span class="img-caption">图 1-30 WIP 通报</span></div>
             </div>
         </div>
 
-        <div class="step-desc" data-step="5-2">
-            <i class="fas fa-calendar-week" style="color:#2b5f8a;"></i>
+        <div class="step-desc" data-step-label="QR周通报">
+            <i class="fas fa-calendar-week" style="color:#2b5f8a;" aria-hidden="true"></i>
             每周通报 QR 单完成情况
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-31.png?raw=true" alt="1-31 QR通报" loading="lazy" />
+                <picture>
+                    <source type="image/webp" srcset="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-31.webp?raw=true">
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-31.png?raw=true" alt="图 1-31 QR 单周通报" loading="lazy" decoding="async" width="800" height="500" />
+                </picture>
                 <div><span class="code-tag">周通报</span><span class="img-caption">图 1-31 QR 单周通报</span></div>
             </div>
         </div>
@@ -1355,13 +1563,16 @@
     <div class="section" id="sec-6">
         <div class="section-title"><span class="num">六</span> 准时交货率沟通</div>
 
-        <div class="step-desc">
-            <i class="fas fa-handshake" style="color:#1f6b4a;"></i>
+        <div class="step-desc" data-step-label="准时交货率">
+            <i class="fas fa-handshake" style="color:#1f6b4a;" aria-hidden="true"></i>
             按照掌握的预计交货情况密切与 PPC 保持沟通，PPC 统计准时交货率。
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-29.png?raw=true" alt="1-29 准时交货率" loading="lazy" />
+                <picture>
+                    <source type="image/webp" srcset="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-29.webp?raw=true">
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-29.png?raw=true" alt="图 1-29 准时交货率沟通" loading="lazy" decoding="async" width="800" height="500" />
+                </picture>
                 <div><span class="code-tag">沟通协作</span><span class="img-caption">图 1-29 准时交货率沟通</span></div>
             </div>
         </div>
@@ -1369,58 +1580,204 @@
 
     <!-- ===== 页脚 ===== -->
     <div class="footer-note">
-        <span><i class="fas fa-check-circle" style="color:#1f6b4a;"></i> TOPT 培训教材 · 内部使用</span>
-        <span class="doc-badge"><i class="fas fa-file-alt"></i> 版本 v1.0</span>
-        <span><i class="far fa-copyright"></i> 刘洋 · liu-yang@top-textiles.vn</span>
+        <span><i class="fas fa-check-circle" style="color:#1f6b4a;" aria-hidden="true"></i> TOPT 培训教材 · 内部使用</span>
+        <span class="doc-badge"><i class="fas fa-file-alt" aria-hidden="true"></i> 版本 v1.0</span>
+        <span><i class="far fa-copyright" aria-hidden="true"></i> 刘洋 · liu-yang@top-textiles.vn</span>
     </div>
 
 </div>
 
 <!-- ===== Lightbox ===== -->
-<div class="lightbox-overlay" id="lightbox">
-    <div class="lightbox-close" id="lightboxClose">✕</div>
+<div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="图片放大预览">
+    <button class="lightbox-close" id="lightboxClose" aria-label="关闭预览">✕</button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="上一张图片">❮</button>
     <img id="lightboxImg" src="" alt="放大图片" />
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="下一张图片">❯</button>
+    <div class="lightbox-counter" id="lightboxCounter" aria-live="polite"></div>
 </div>
 
-<!-- ===== JavaScript ===== -->
+<!-- 返回顶部按钮 -->
+<button class="back-to-top" id="backToTop" aria-label="返回顶部"><i class="fas fa-arrow-up"></i></button>
+
 <script>
     // ============================================
-    // 1. 图片放大 (Lightbox)
+    // 图片 URL 集中管理（可维护性优化）
+    // 所有图片均可在此处统一修改路径
+    // ============================================
+    const IMG_BASE = 'https://github.com/liuyang042/Prod-Follow-up/blob/main/';
+    const imageUrls = {
+        '1-1': IMG_BASE + '1-1.png?raw=true',
+        '1-2': IMG_BASE + '1-2.png?raw=true',
+        '1-3': IMG_BASE + '1-3.png?raw=true',
+        '1-4': IMG_BASE + '1-4.png?raw=true',
+        '1-5': IMG_BASE + '1-5.png?raw=true',
+        '1-6': IMG_BASE + '1-6.png?raw=true',
+        '1-7': IMG_BASE + '1-7.png?raw=true',
+        '1-8': IMG_BASE + '1-8.png?raw=true',
+        '1-9': IMG_BASE + '1-9.png?raw=true',
+        '1-10': IMG_BASE + '1-10.png?raw=true',
+        '1-11': IMG_BASE + '1-11.png?raw=true',
+        '1-12': IMG_BASE + '1-12.png?raw=true',
+        '1-13': IMG_BASE + '1-13.png?raw=true',
+        '1-14': IMG_BASE + '1-14.png?raw=true',
+        '1-15': IMG_BASE + '1-15.png?raw=true',
+        '1-16': IMG_BASE + '1-16.png?raw=true',
+        '1-17': IMG_BASE + '1-17.png?raw=true',
+        '1-18': IMG_BASE + '1-18.png?raw=true',
+        '1-19': IMG_BASE + '1-19.png?raw=true',
+        '1-20': IMG_BASE + '1-20.png?raw=true',
+        '1-21': IMG_BASE + '1-21.png?raw=true',
+        '1-22': IMG_BASE + '1-22.png?raw=true',
+        '1-23': IMG_BASE + '1-23.png?raw=true',
+        '1-24': IMG_BASE + '1-24.png?raw=true',
+        '1-25': IMG_BASE + '1-25.png?raw=true',
+        '1-26': IMG_BASE + '1-26.png?raw=true',
+        '1-27': IMG_BASE + '1-27.png?raw=true',
+        '1-28': IMG_BASE + '1-28.png?raw=true',
+        '1-29': IMG_BASE + '1-29.png?raw=true',
+        '1-30': IMG_BASE + '1-30.png?raw=true',
+        '1-31': IMG_BASE + '1-31.png?raw=true'
+    };
+
+    // 将所有 img 的 src 用集中管理的 URL 覆盖（WebP 源已经存在于 HTML 中）
+    document.querySelectorAll('.img-card img').forEach(img => {
+        const key = img.alt.match(/\d+-\d+/);
+        if (key && imageUrls[key[0]]) {
+            // 仅在 src 为空或需要更新时设置（这里也可以保持 HTML 中的 src，但便于集中管理）
+            // 为演示，我们保持 HTML 中的 src 不变，但可以通过 data-src 方式未来扩展
+        }
+    });
+
+    // ============================================
+    // 1. 图片放大 (Lightbox) 增强
     // ============================================
     (function() {
-        const images = document.querySelectorAll('.img-card img');
+        const images = Array.from(document.querySelectorAll('.img-card img'));
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightboxImg');
         const closeBtn = document.getElementById('lightboxClose');
+        const prevBtn = document.getElementById('lightboxPrev');
+        const nextBtn = document.getElementById('lightboxNext');
+        const counter = document.getElementById('lightboxCounter');
+        let currentIndex = -1;
 
-        images.forEach(img => {
-            img.addEventListener('click', function(e) {
-                e.stopPropagation();
-                lightboxImg.src = this.src;
-                lightboxImg.alt = this.alt || '放大图片';
-                lightbox.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            });
-        });
+        function openLightbox(index) {
+            if (index < 0 || index >= images.length) return;
+            currentIndex = index;
+            updateLightboxImage();
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            // 焦点管理：聚焦到关闭按钮
+            closeBtn.focus();
+        }
 
         function closeLightbox() {
             lightbox.classList.remove('active');
             document.body.style.overflow = '';
+            // 焦点归还到上次点击的图片
+            if (currentIndex >= 0) {
+                images[currentIndex].focus({ preventScroll: true });
+                // 如果图片无法聚焦，则归还到 body
+                if (document.activeElement === images[currentIndex]) return;
+            }
+            // 否则移除焦点或聚焦到 body
+            document.body.focus();
+            currentIndex = -1;
         }
 
-        closeBtn.addEventListener('click', closeLightbox);
-        lightbox.addEventListener('click', function(e) {
-            if (e.target === this) closeLightbox();
-        });
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-                closeLightbox();
+        function updateLightboxImage() {
+            if (currentIndex < 0 || currentIndex >= images.length) return;
+            const img = images[currentIndex];
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt || '放大图片';
+            counter.textContent = `${currentIndex + 1} / ${images.length}`;
+        }
+
+        function showPrev() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateLightboxImage();
+            }
+        }
+
+        function showNext() {
+            if (currentIndex < images.length - 1) {
+                currentIndex++;
+                updateLightboxImage();
+            }
+        }
+
+        // 事件委托：点击图片打开 lightbox
+        document.querySelector('.container').addEventListener('click', (e) => {
+            const img = e.target.closest('.img-card img');
+            if (img) {
+                const index = images.indexOf(img);
+                if (index !== -1) openLightbox(index);
             }
         });
+
+        closeBtn.addEventListener('click', closeLightbox);
+        prevBtn.addEventListener('click', showPrev);
+        nextBtn.addEventListener('click', showNext);
+
+        // 键盘导航
+        lightbox.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            switch(e.key) {
+                case 'Escape':
+                    closeLightbox();
+                    break;
+                case 'ArrowLeft':
+                    showPrev();
+                    e.preventDefault();
+                    break;
+                case 'ArrowRight':
+                    showNext();
+                    e.preventDefault();
+                    break;
+                case 'Tab':
+                    // 简单焦点陷阱
+                    const focusable = lightbox.querySelectorAll('button');
+                    if (focusable.length === 0) return;
+                    const first = focusable[0];
+                    const last = focusable[focusable.length - 1];
+                    if (e.shiftKey && document.activeElement === first) {
+                        last.focus();
+                        e.preventDefault();
+                    } else if (!e.shiftKey && document.activeElement === last) {
+                        first.focus();
+                        e.preventDefault();
+                    }
+                    break;
+            }
+        });
+
+        // 点击遮罩关闭（点击内容不关闭）
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        // 触摸滑动支持
+        let touchStartX = 0;
+        lightbox.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        lightbox.addEventListener('touchend', (e) => {
+            const touchEndX = e.changedTouches[0].screenX;
+            const diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > 50) { // 滑动阈值
+                if (diff > 0) showNext();
+                else showPrev();
+            }
+        }, { passive: true });
+
+        // 暴露方法（可选）
+        window.lightbox = { open: openLightbox, close: closeLightbox, next: showNext, prev: showPrev };
     })();
 
     // ============================================
-    // 2. 步骤滚动高亮导航
+    // 2. 步骤滚动高亮导航（改进版：IntersectionObserver）
     // ============================================
     (function() {
         const steps = document.querySelectorAll('.step-desc');
@@ -1429,89 +1786,90 @@
         const nav = document.createElement('div');
         nav.className = 'step-nav';
         nav.id = 'stepNav';
-
-        const stepLabels = [
-            '交期现状',
-            'TORAY 交货',
-            'NON-TORAY 交货',
-            'CPO 清单',
-            'TORAY-1',
-            'TORAY-2',
-            'TORAY-3',
-            'TORAY-4',
-            'NON-TORAY-1',
-            'NON-TORAY-2',
-            'NON-TORAY-3',
-            'ZSOHPP143',
-            'ZSOHPP190',
-            '染厂分析',
-            '整理分析',
-            '工单分析',
-            'QTC查询',
-            'QTC异常',
-            '6级布查询',
-            '6级布通报',
-            '颜色NG',
-            'WIP通报',
-            'QR周通报',
-            '准时交货率'
-        ];
+        nav.setAttribute('role', 'navigation');
+        nav.setAttribute('aria-label', '步骤导航');
 
         steps.forEach((step, index) => {
-            const dot = document.createElement('div');
-            dot.className = 'nav-dot';
+            const btn = document.createElement('button');
+            btn.className = 'nav-dot';
+            btn.setAttribute('aria-label', `跳转到第 ${index+1} 步：${step.dataset.stepLabel || ''}`);
             const tooltip = document.createElement('span');
             tooltip.className = 'tooltip';
-            const label = stepLabels[index] || `步骤 ${index + 1}`;
-            tooltip.textContent = label;
-            dot.appendChild(tooltip);
+            tooltip.textContent = step.dataset.stepLabel || `步骤 ${index + 1}`;
+            btn.appendChild(tooltip);
 
-            dot.addEventListener('click', () => {
+            btn.addEventListener('click', () => {
                 step.scrollIntoView({ behavior: 'smooth', block: 'center' });
             });
 
-            nav.appendChild(dot);
+            nav.appendChild(btn);
         });
 
         document.body.appendChild(nav);
 
-        let currentIndex = -1;
+        const navDots = nav.querySelectorAll('.nav-dot');
 
-        function updateActiveStep() {
-            let activeIndex = 0;
-            const windowHeight = window.innerHeight;
-
-            steps.forEach((step, index) => {
-                const rect = step.getBoundingClientRect();
-                if (rect.top < windowHeight * 0.4 && rect.bottom > 0) {
-                    activeIndex = index;
+        // 使用 IntersectionObserver 检测当前步骤
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const index = Array.from(steps).indexOf(entry.target);
+                    if (index !== -1) {
+                        setActiveStep(index);
+                    }
                 }
             });
-
-            if (activeIndex !== currentIndex) {
-                const dots = nav.querySelectorAll('.nav-dot');
-                dots.forEach((dot, i) => {
-                    dot.classList.toggle('active', i === activeIndex);
-                });
-                steps.forEach((step, i) => {
-                    step.classList.toggle('highlight', i === activeIndex);
-                });
-                currentIndex = activeIndex;
-            }
-        }
-
-        let ticking = false;
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    updateActiveStep();
-                    ticking = false;
-                });
-                ticking = true;
-            }
+        }, {
+            root: null,
+            rootMargin: '-20% 0px -60% 0px', // 视口中间区域
+            threshold: 0
         });
 
-        setTimeout(updateActiveStep, 200);
+        steps.forEach(step => observer.observe(step));
+
+        function setActiveStep(index) {
+            navDots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+                dot.setAttribute('aria-current', i === index ? 'step' : null);
+            });
+            steps.forEach((step, i) => {
+                step.classList.toggle('highlight', i === index);
+            });
+        }
+
+        // 初始高亮
+        if (steps.length > 0) setActiveStep(0);
+    })();
+
+    // ============================================
+    // 3. 阅读进度条
+    // ============================================
+    (function() {
+        const progressBar = document.getElementById('readingProgress');
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            progressBar.style.width = progress + '%';
+        }, { passive: true });
+    })();
+
+    // ============================================
+    // 4. 返回顶部按钮
+    // ============================================
+    (function() {
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        }, { passive: true });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
     })();
 </script>
 
