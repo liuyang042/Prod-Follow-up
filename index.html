@@ -123,6 +123,13 @@
             justify-content: space-between;
             align-items: center;
             gap: 1.2rem;
+            position: relative;
+            /* 新增：柔和渐变背景 */
+            background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.05) 100%);
+            border-radius: 32px;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+            transition: background var(--transition-speed) ease, border-color var(--transition-speed) ease;
         }
 
         .header-brand {
@@ -166,11 +173,13 @@
             font-size: 2.2rem;
             font-weight: 700;
             letter-spacing: -0.02em;
-            background: linear-gradient(145deg, var(--text-heading), var(--accent-light));
+            background: linear-gradient(145deg, #0a1e33, #1a4b70);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 0.1rem;
+            /* 新增：轻微文字阴影 */
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
         }
 
         .header-left .subhead {
@@ -185,6 +194,14 @@
             backdrop-filter: blur(4px);
             border: 1px solid rgba(255, 255, 255, 0.4);
             transition: background var(--transition-speed) ease, color var(--transition-speed) ease;
+            /* 新增：小图标 */
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .header-left .subhead::before {
+            content: "📘";
+            font-size: 1em;
         }
 
         .header-right {
@@ -559,8 +576,8 @@
             transition: all 0.3s ease;
             cursor: pointer;
             min-height: 100px;
-            aspect-ratio: 16 / 10; /* 提供占位比，防止 CLS */
-            object-fit: cover; /* 如果实际比例不同，可调整为 contain */
+            /* 修复：移除固定比例和 cover，使用 contain 保证完整显示 */
+            object-fit: contain;
             display: block;
             margin-bottom: 6px;
         }
@@ -910,6 +927,7 @@
                 flex-direction: column;
                 align-items: stretch;
                 gap: 0.8rem;
+                padding: 1rem;
             }
             .header-right {
                 justify-content: flex-start;
@@ -1017,7 +1035,6 @@
                 page-break-inside: avoid;
             }
             .img-card img {
-                aspect-ratio: auto;
                 object-fit: contain;
             }
         }
@@ -1075,7 +1092,7 @@
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-1.png?raw=true" alt="图 1-1 交期现状" loading="lazy" decoding="async" width="800" height="500" />
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-1.png?raw=true" alt="图 1-1 交期现状" loading="lazy" decoding="async" />
                 <div><span class="code-tag">交期现状</span><span class="img-caption">图 1-1 交期现状</span></div>
             </div>
         </div>
@@ -1091,7 +1108,7 @@
             </div>
             <div class="img-grid">
                 <div class="img-card">
-                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-2.png?raw=true" alt="图 1-2 TORAY 交货计划" loading="lazy" decoding="async" width="800" height="500" />
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-2.png?raw=true" alt="图 1-2 TORAY 交货计划" loading="lazy" decoding="async" />
                     <div><span class="code-tag">TORAY</span><span class="img-caption">图 1-2 TORAY 交货计划</span></div>
                 </div>
             </div>
@@ -1108,7 +1125,7 @@
             </div>
             <div class="img-grid">
                 <div class="img-card">
-                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-3.png?raw=true" alt="图 1-3 NON-TORAY 交货计划" loading="lazy" decoding="async" width="800" height="500" />
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-3.png?raw=true" alt="图 1-3 NON-TORAY 交货计划" loading="lazy" decoding="async" />
                     <div><span class="code-tag">NON-TORAY</span><span class="img-caption">图 1-3 NON-TORAY 交货计划</span></div>
                 </div>
             </div>
@@ -1130,7 +1147,7 @@
             <h3><i class="fas fa-warehouse" style="color:#2b5f8a;" aria-hidden="true"></i> STOCK + WIP（TORAY）</h3>
             <div class="img-grid">
                 <div class="img-card">
-                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-4.png?raw=true" alt="图 1-4 STOCK+WIP（TORAY）" loading="lazy" decoding="async" width="800" height="500" />
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-4.png?raw=true" alt="图 1-4 STOCK+WIP（TORAY）" loading="lazy" decoding="async" />
                     <div><span class="code-tag">TORAY</span><span class="img-caption">图 1-4 STOCK+WIP（TORAY）</span></div>
                 </div>
             </div>
@@ -1149,7 +1166,7 @@
             </div>
             <div class="img-grid">
                 <div class="img-card">
-                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-6.png?raw=true" alt="图 1-6 交货计划分析" loading="lazy" decoding="async" width="800" height="500" />
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-6.png?raw=true" alt="图 1-6 交货计划分析" loading="lazy" decoding="async" />
                     <div><span class="code-tag">分析工具</span><span class="img-caption">图 1-6 交货计划分析</span></div>
                 </div>
             </div>
@@ -1166,7 +1183,7 @@
             </div>
             <div class="img-grid">
                 <div class="img-card">
-                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-7.png?raw=true" alt="图 1-7 库存分析" loading="lazy" decoding="async" width="800" height="500" />
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-7.png?raw=true" alt="图 1-7 库存分析" loading="lazy" decoding="async" />
                     <div><span class="code-tag">库存分析</span><span class="img-caption">图 1-7 库存分析</span></div>
                 </div>
             </div>
@@ -1183,7 +1200,7 @@
             </div>
             <div class="img-grid">
                 <div class="img-card">
-                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-8.png?raw=true" alt="图 1-8 WIP 分析" loading="lazy" decoding="async" width="800" height="500" />
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-8.png?raw=true" alt="图 1-8 WIP 分析" loading="lazy" decoding="async" />
                     <div><span class="code-tag">WIP分析</span><span class="img-caption">图 1-8 WIP 分析</span></div>
                 </div>
             </div>
@@ -1199,7 +1216,7 @@
             </div>
             <div class="img-grid">
                 <div class="img-card">
-                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-9.png?raw=true" alt="图 1-9 邮件发送" loading="lazy" decoding="async" width="800" height="500" />
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-9.png?raw=true" alt="图 1-9 邮件发送" loading="lazy" decoding="async" />
                     <div><span class="code-tag">邮件发送</span><span class="img-caption">图 1-9 交货清单邮件</span></div>
                 </div>
             </div>
@@ -1210,7 +1227,7 @@
             <h3><i class="fas fa-warehouse" style="color:#8a6e9b;" aria-hidden="true"></i> STOCK + WIP（NON-TORAY）</h3>
             <div class="img-grid">
                 <div class="img-card">
-                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-5.png?raw=true" alt="图 1-5 NON-TORAY 库存WIP" loading="lazy" decoding="async" width="800" height="500" />
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-5.png?raw=true" alt="图 1-5 NON-TORAY 库存WIP" loading="lazy" decoding="async" />
                     <div><span class="code-tag">NON-TORAY</span><span class="img-caption">图 1-5 STOCK+WIP（NON-TORAY）</span></div>
                 </div>
             </div>
@@ -1229,7 +1246,7 @@
             </div>
             <div class="img-grid">
                 <div class="img-card">
-                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-11.png?raw=true" alt="图 1-11 NON-TORAY 分析" loading="lazy" decoding="async" width="800" height="500" />
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-11.png?raw=true" alt="图 1-11 NON-TORAY 分析" loading="lazy" decoding="async" />
                     <div><span class="code-tag">分析工具</span><span class="img-caption">图 1-11 NON-TORAY 分析</span></div>
                 </div>
             </div>
@@ -1246,7 +1263,7 @@
             </div>
             <div class="img-grid">
                 <div class="img-card">
-                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-10.png?raw=true" alt="图 1-10 库存+WIP分析" loading="lazy" decoding="async" width="800" height="500" />
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-10.png?raw=true" alt="图 1-10 库存+WIP分析" loading="lazy" decoding="async" />
                     <div><span class="code-tag">库存WIP</span><span class="img-caption">图 1-10 库存+WIP分析</span></div>
                 </div>
             </div>
@@ -1257,7 +1274,7 @@
             </div>
             <div class="img-grid">
                 <div class="img-card">
-                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-12.png?raw=true" alt="图 1-12 邮件发送" loading="lazy" decoding="async" width="800" height="500" />
+                    <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-12.png?raw=true" alt="图 1-12 邮件发送" loading="lazy" decoding="async" />
                     <div><span class="code-tag">邮件发送</span><span class="img-caption">图 1-12 交货清单邮件</span></div>
                 </div>
             </div>
@@ -1275,7 +1292,7 @@
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-13.png?raw=true" alt="图 1-13 ZSOHPP143" loading="lazy" decoding="async" width="800" height="500" />
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-13.png?raw=true" alt="图 1-13 ZSOHPP143" loading="lazy" decoding="async" />
                 <div><span class="code-tag">ZSOHPP143</span><span class="img-caption">图 1-13 大货急单跟进</span></div>
             </div>
         </div>
@@ -1286,7 +1303,7 @@
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-14.png?raw=true" alt="图 1-14 ZSOHPP190" loading="lazy" decoding="async" width="800" height="500" />
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-14.png?raw=true" alt="图 1-14 ZSOHPP190" loading="lazy" decoding="async" />
                 <div><span class="code-tag">ZSOHPP190</span><span class="img-caption">图 1-14 APP 急单跟进</span></div>
             </div>
         </div>
@@ -1302,7 +1319,7 @@
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-15.png?raw=true" alt="图 1-15 染厂 WIP 分析" loading="lazy" decoding="async" width="800" height="500" />
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-15.png?raw=true" alt="图 1-15 染厂 WIP 分析" loading="lazy" decoding="async" />
                 <div><span class="code-tag">染厂</span><span class="img-caption">图 1-15 染厂 WIP 分析</span></div>
             </div>
         </div>
@@ -1318,7 +1335,7 @@
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-16.png?raw=true" alt="图 1-16 整理 WIP 分析" loading="lazy" decoding="async" width="800" height="500" />
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-16.png?raw=true" alt="图 1-16 整理 WIP 分析" loading="lazy" decoding="async" />
                 <div><span class="code-tag">整理</span><span class="img-caption">图 1-16 整理 WIP 分析</span></div>
             </div>
         </div>
@@ -1334,23 +1351,23 @@
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-17.png?raw=true" alt="图 1-17 工单分析" loading="lazy" decoding="async" width="800" height="500" />
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-17.png?raw=true" alt="图 1-17 工单分析" loading="lazy" decoding="async" />
                 <div><span class="code-tag">分析工具</span><span class="img-caption">图 1-17 工单分析</span></div>
             </div>
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-18.png?raw=true" alt="图 1-18 工单分析" loading="lazy" decoding="async" width="800" height="500" />
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-18.png?raw=true" alt="图 1-18 工单分析" loading="lazy" decoding="async" />
                 <div><span class="code-tag">分析工具</span><span class="img-caption">图 1-18 工单分析</span></div>
             </div>
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-19.png?raw=true" alt="图 1-19 工单分析" loading="lazy" decoding="async" width="800" height="500" />
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-19.png?raw=true" alt="图 1-19 工单分析" loading="lazy" decoding="async" />
                 <div><span class="code-tag">分析工具</span><span class="img-caption">图 1-19 工单分析</span></div>
             </div>
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-20.png?raw=true" alt="图 1-20 工单分析" loading="lazy" decoding="async" width="800" height="500" />
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-20.png?raw=true" alt="图 1-20 工单分析" loading="lazy" decoding="async" />
                 <div><span class="code-tag">分析工具</span><span class="img-caption">图 1-20 工单分析</span></div>
             </div>
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-21.png?raw=true" alt="图 1-21 工单分析" loading="lazy" decoding="async" width="800" height="500" />
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-21.png?raw=true" alt="图 1-21 工单分析" loading="lazy" decoding="async" />
                 <div><span class="code-tag">分析工具</span><span class="img-caption">图 1-21 工单分析</span></div>
             </div>
         </div>
@@ -1367,11 +1384,11 @@
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-22.png?raw=true" alt="图 1-22 QTC 查询" loading="lazy" decoding="async" width="800" height="500" />
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-22.png?raw=true" alt="图 1-22 QTC 查询" loading="lazy" decoding="async" />
                 <div><span class="code-tag">ZSOHQM031</span><span class="img-caption">图 1-22 QTC 查询</span></div>
             </div>
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-23.png?raw=true" alt="图 1-23 QTC 结果" loading="lazy" decoding="async" width="800" height="500" />
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-23.png?raw=true" alt="图 1-23 QTC 结果" loading="lazy" decoding="async" />
                 <div><span class="code-tag">QTC 结果</span><span class="img-caption">图 1-23 QTC 结果</span></div>
             </div>
         </div>
@@ -1382,7 +1399,7 @@
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-24.png?raw=true" alt="图 1-24 QTC 异常通报" loading="lazy" decoding="async" width="800" height="500" />
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-24.png?raw=true" alt="图 1-24 QTC 异常通报" loading="lazy" decoding="async" />
                 <div><span class="code-tag">异常通报</span><span class="img-caption">图 1-24 QTC 异常通报</span></div>
             </div>
         </div>
@@ -1393,11 +1410,11 @@
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-25.png?raw=true" alt="图 1-25 6 级布查询" loading="lazy" decoding="async" width="800" height="500" />
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-25.png?raw=true" alt="图 1-25 6 级布查询" loading="lazy" decoding="async" />
                 <div><span class="code-tag">ZSOHQM010</span><span class="img-caption">图 1-25 6 级布查询</span></div>
             </div>
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-26.png?raw=true" alt="图 1-26 6 级布结果" loading="lazy" decoding="async" width="800" height="500" />
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-26.png?raw=true" alt="图 1-26 6 级布结果" loading="lazy" decoding="async" />
                 <div><span class="code-tag">查询结果</span><span class="img-caption">图 1-26 6 级布结果</span></div>
             </div>
         </div>
@@ -1413,7 +1430,7 @@
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-27.png?raw=true" alt="图 1-27 6 级布通报" loading="lazy" decoding="async" width="800" height="500" />
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-27.png?raw=true" alt="图 1-27 6 级布通报" loading="lazy" decoding="async" />
                 <div><span class="code-tag">进度通报</span><span class="img-caption">图 1-27 6 级布通报</span></div>
             </div>
         </div>
@@ -1424,7 +1441,7 @@
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-28.png?raw=true" alt="图 1-28 颜色 NG 督查" loading="lazy" decoding="async" width="800" height="500" />
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-28.png?raw=true" alt="图 1-28 颜色 NG 督查" loading="lazy" decoding="async" />
                 <div><span class="code-tag">ZSOHPP063</span><span class="img-caption">图 1-28 颜色 NG 督查</span></div>
             </div>
         </div>
@@ -1441,7 +1458,7 @@
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-30.png?raw=true" alt="图 1-30 WIP 通报" loading="lazy" decoding="async" width="800" height="500" />
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-30.png?raw=true" alt="图 1-30 WIP 通报" loading="lazy" decoding="async" />
                 <div><span class="code-tag">邮件通报</span><span class="img-caption">图 1-30 WIP 通报</span></div>
             </div>
         </div>
@@ -1452,7 +1469,7 @@
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-31.png?raw=true" alt="图 1-31 QR 单周通报" loading="lazy" decoding="async" width="800" height="500" />
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-31.png?raw=true" alt="图 1-31 QR 单周通报" loading="lazy" decoding="async" />
                 <div><span class="code-tag">周通报</span><span class="img-caption">图 1-31 QR 单周通报</span></div>
             </div>
         </div>
@@ -1469,7 +1486,7 @@
         </div>
         <div class="img-grid">
             <div class="img-card">
-                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-29.png?raw=true" alt="图 1-29 准时交货率沟通" loading="lazy" decoding="async" width="800" height="500" />
+                <img src="https://github.com/liuyang042/Prod-Follow-up/blob/main/1-29.png?raw=true" alt="图 1-29 准时交货率沟通" loading="lazy" decoding="async" />
                 <div><span class="code-tag">沟通协作</span><span class="img-caption">图 1-29 准时交货率沟通</span></div>
             </div>
         </div>
@@ -1552,7 +1569,6 @@
             }
         }
 
-        // 事件委托：点击图片打开 lightbox
         document.querySelector('.container').addEventListener('click', (e) => {
             const img = e.target.closest('.img-card img');
             if (img) {
@@ -1599,7 +1615,6 @@
             if (e.target === lightbox) closeLightbox();
         });
 
-        // 触摸滑动支持
         let touchStartX = 0;
         lightbox.addEventListener('touchstart', (e) => {
             touchStartX = e.changedTouches[0].screenX;
